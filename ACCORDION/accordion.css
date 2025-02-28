@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('./color_curso.css');
+
+/* Configuración general */
+* {
+    font-family: 'Poppins';
+}
+
+#contenedor-acordeon {
+    margin-bottom:10px;
+}
+
+/* Estilo para las secciones del acordeón */
+#contenedor-acordeon .acordeon {
+    margin-top: 10px;
+}
+
+/* Estilo para los encabezados del acordeón */
+#contenedor-acordeon .encabezado-acordeon {
+    background-color: var(--background-titulo);
+    color: var(--color-titulo-accordeon);
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Estilo para el contenido del acordeón */
+#contenedor-acordeon .contenido-acordeon {
+    padding: 0 18px;
+    background-color: var(--background-contenido-accordeon);
+    max-height: 0;
+    overflow: auto;
+    scrollbar-width: none;
+    transition: max-height 0.2s ease-out;
+}
+
+/* Estilo para las imágenes dentro del contenido del acordeón */
+#contenedor-acordeon .contenido-acordeon img {
+    display: block;
+    width: 100%;
+    object-fit: contain;
+    margin: 10px auto;
+}
+
+/* Estilo para elementos alineados horizontalmente */
+#contenedor-acordeon .en-linea {
+    display: flex;
+    justify-content: space-between;
+}
+
+#contenedor-acordeon .en-linea img {
+    max-width:35%;
+    margin:auto;
+    padding:3%;
+}
+
+#contenedor-acordeon .en-linea p {
+    height: max-content;
+    padding: 3%;
+    margin: auto 0;
+}
+
+/* Caja de información adicional */
+#contenedor-acordeon .caja-informacion {
+    background-color: var(--background-caja-info);
+    color: var(--color-caja-info);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+    display: flex;
+}
+
+#contenedor-acordeon .caja-informacion img {
+    border-radius: 10px;
+    margin-right: 5%;
+    max-height: 20vh;
+}
+
+#contenedor-acordeon li {
+    margin-left: 2.5%;
+}
+
+#contenedor-acordeon li::marker {
+    color: #00897b;
+}
+
+/* Estilo para texto resaltado */
+#contenedor-acordeon .resaltado {
+    color: var(--color-negrita);
+    font-weight: bold;
+}
+
+/* Contenedor de texto dentro del acordeón */
+#contenedor-acordeon .contenido-texto {
+    width: 70%;
+    height: max-content;
+    margin: auto;
+    font-size: 19px;
+}
+
+/* Estilo para imágenes cuadradas */
+#contenedor-acordeon .cuadrada {
+    height: 100% !important;
+    padding: 0 5%;
+}
+#contenedor-acordeon button {
+    border-radius:0px;
+}

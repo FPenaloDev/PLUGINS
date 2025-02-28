@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('../color_curso.css');
+
+:root{
+    --background-actividad:var(--primario-opacidad);
+    --background-boton-reset:var(--secundario);
+    --background-boton-reset-hover:var(--secundario);
+    --texto-boton-reset:var(--blanco);
+    --texto-boton-reset-hover:var(--blanco);
+}
+
+#arrastrarSoltarTexto {
+    font-family: 'Poppins';
+    max-width: 65%;
+    margin: 20px auto;
+    background-color: var(--background-actividad);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.frases {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+
+    .frase {
+        display: flex;
+        background: transparent !important;
+        align-items:center;
+    }
+}
+.texto {
+    display: flex;
+    align-items:center;
+}
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.instructions {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0f0f0f;
+}
+
+.actividad {
+    margin-bottom: 20px;
+    padding: 2%;
+    border-radius: 20px;
+}
+
+.actividad p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background: #fff;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.espacio_palabra {
+    display: inline-block;
+    min-width: 100px;
+    min-height:20px;
+    height: max-content;
+    padding:10px;
+    border: 2px double var(--terciario);
+    border-radius: 5px;
+    margin: 10px;
+    margin-bottom: 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.palabras {
+    margin:2em 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.palabra {
+    color: var(--blanco);
+    background: var(--secundario);
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in;
+}
+
+.palabra:hover {
+    color: var(--blanco);
+    background: var(--secundario);
+    font-weight:bold;
+    transform:translateY(-8px);
+    box-shadow: 3px 3px 6px var(--terciario-opacidad);
+}
+
+
+.correcto {
+    background: green !important;
+    border:none;
+}
+
+.incorrecto {
+    color: #fff !important;
+    background: red;
+}
+
+#reiniciarActividad {
+    font-family: 'Poppins';
+    display: flex;
+    border:none;
+    padding:10px 20px;
+    border-radius: 20px;
+    background:var(--background-boton-reset);
+    font-size: 1.3em;
+    cursor:pointer;
+    color:var(--texto-boton-reset);
+    font-weight:700 ;
+    width:max-content;
+    margin: auto;
+    transition: all 0.25s ease-in;
+}
+#reiniciarActividad:hover {
+    transform:translateY(-8px);
+    font-family: 'Poppins';
+    display: flex;
+    border:none;
+    padding:10px 20px;
+    border-radius: 20px;
+    background:var(--background-boton-reset-hover);
+    font-size: 1.3em;
+    cursor:pointer;
+    color:var(--texto-boton-reset-hover);
+    font-weight:700 ;
+    width:max-content;
+    margin: auto;
+}

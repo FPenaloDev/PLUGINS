@@ -1,0 +1,152 @@
+@import url('./color_curso.css');
+
+.actividad-ordena {
+    max-width: 80%;
+    margin: 20px auto;
+    font-family: 'Poppins' !important;
+    transition: all 0.3s ease;
+}
+
+.tituloActividad {
+    font-family: 'Poppins' !important;
+    display:flex;
+    max-width:80%;
+    width:max-content;
+    margin:auto;
+    font-size:2em;
+    font-weight:800;
+}
+
+.contenedor-ordenar {
+    display: flex;
+    gap: 20px;
+    background: var(--blanco);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.lista-conceptos {
+    flex: 1;
+}
+
+.concepto {
+    padding: 15px;
+    margin: 8px 0;
+    background-color: var(--terciario);
+    color:var(--blanco);
+    border: 2px solid var(--terciario);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.concepto:hover {
+    transform: translateX(5px);
+}
+
+.concepto.seleccionado {
+    border-color: var(--secundario);
+    color: var(--secundario);
+    font-weight:750;
+    transform: scale(1.02);
+}
+
+.concepto.correcto {
+    border-color: #28a745;
+    background-color: #d4edda;
+}
+
+.concepto.incorrecto {
+    border-color: #dc3545;
+    background-color: #f8d7da;
+}
+
+.concepto.moviendo {
+    animation: pulse 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.controles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.boton {
+    padding: 12px;
+    border: none;
+    border-radius: 80px;
+    cursor: pointer;
+    background: var(--secundario);
+    color: white;
+    transition: all 0.2s ease;
+    font-size: 1.2em;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    transition:all 0.35s ease-in;
+    justify-content: center;
+}
+
+.boton:hover {
+    transform:translateY(-10px) scale(1.2) !important;
+}
+
+.boton:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.boton:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 10px 4px 8px var(--primario);
+    border: 3px solid var(--blanco);
+}
+
+.boton-verificar {
+    width: auto;
+    padding: 15px 30px;
+    background: var(--primario);
+    color:var(--secundario);
+    margin-top: 20px;
+    font-size: 1.3em;
+}
+
+.controles-juego {
+    max-width:max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.mensaje-nivel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.9);
+    color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-size: 1.5em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.mensaje-nivel.visible {
+    opacity: 1;
+}

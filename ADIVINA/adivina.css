@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('./color_plugin.css');
+
+#actividad_adivina {
+  font-family: 'Poppins';
+  padding: 20px;
+  background: var(--background-actividad);
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 2px 5px var(--sombra-actividad);
+}
+
+#imagen-adivina {
+  max-width:40%;
+  object-fit: contain;
+  max-height: max-content;
+  border-radius: 30px;
+  display:flex;
+  margin: auto;
+}
+
+#actividad_adivina h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--color-titulo);
+}
+
+
+#actividad_adivina .pista-titulo {
+  display:flex;
+  font-size:2em;
+  font-weight:bold;
+  color:var(--color-titulo-pistas);
+  max-width:max-content;
+  margin: auto;
+}
+
+#actividad_adivina #pista {
+  margin: 10px 0;
+  font-size: 16px;
+  text-align:center;
+  max-width:80%;
+  margin:auto;
+  margin-bottom:15px;
+  border-radius:20px;
+  padding:10px;
+  background: var(--background-texto-pistas);
+  color: var(--color-texto-pistas);
+}
+
+#actividad_adivina .input-char {
+  width: 40px;
+  height: 30px;
+  margin: 2px;
+  text-align: center;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#actividad_adivina #intentos {
+  display: flex;
+  justify-content: center;
+}
+
+#actividad_adivina .svg-intentos {
+  display:flex;
+  width: 4em;
+  height: 4em;
+}
+
+#actividad_adivina .intento {
+  display: inline-block;
+  margin: 2px;
+  fill: red;
+  border-radius: 50%;
+}
+
+#actividad_adivina button {
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #fff;
+  background: var(--background-boton-intentar);
+  border: none;
+  max-width:max-content;
+  display: flex;
+  margin: auto;
+  margin-top:15px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+#actividad_adivina button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#actividad_adivina #mensaje {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+#actividad_adivina .letra-roja {
+  color: red;
+}
+
+#popup-retroalimentacion {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#actividad_adivina #popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#actividad_adivina #cerrar-popup {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: var(--background-boton-popup);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s ease-in;
+}
+
+#actividad_adivina #cerrar-popup:hover {
+  background-color: var(--background-boton-popup-hover);
+  transform: translateY(-3px);
+}

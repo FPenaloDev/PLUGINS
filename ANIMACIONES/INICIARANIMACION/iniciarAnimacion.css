@@ -1,0 +1,42 @@
+@import url(../../colores_curso.css);
+.div-contador {
+    position: absolute;
+    font-size: 80%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--fondo-captivate);
+    z-index: 9999;
+    align-items: center;
+}
+
+.circulo-carga {
+    opacity:0;
+    position: absolute;
+    display:flex;
+    margin:auto;
+    width:10em;
+    top:calc(45% - 2.5em);
+    left:calc(45% - 2.5em);
+    border: 5px solid var(--primario);
+    border-top: transparent;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    animation: girar 1s linear infinite;
+}
+
+.texto-carga {
+    position:absolute;
+    left:calc(40% - 1.5em);
+    top:calc(50% - 1.5em);
+    font-weight: bold;
+    width:3em;
+    color: var(--primario);
+    aspect-ratio:1/1;
+}
+
+.texto-carga p {
+    font-size:3em;
+}

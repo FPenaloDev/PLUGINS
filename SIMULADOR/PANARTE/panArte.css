@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('../../color_curso.css');
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#toldo {
+    margin: auto;
+    perspective: 750px;
+    width: 80%;
+
+    .toldo-superior {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        background: var(--primario);
+        color: #fff;
+        border: 3px solid #ffffff;
+        text-align: center;
+        height: 100px;
+        font-size: 2.5em;
+        position: relative;
+        transform: rotateX(5deg);
+        transform-origin: bottom;
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+        margin-bottom: 0px;
+        border-radius: 10px;
+    }
+
+    .titulo-escena {
+        position: absolute;
+        bottom: 15%;
+        left: 15%;
+        width: 70%;
+        text-align: center;
+        height: max-content;
+        color: #fff;
+    }
+
+    .decorado {
+        display: flex;
+        position: relative;
+        transform-style: preserve-3d;
+        max-width: 50%;
+        margin: auto;
+    }
+
+    .toldo,
+    .toldo-principio,
+    .toldo-final {
+        position: relative;
+        border: none;
+        background: linear-gradient(180deg, var(--primario) 0%, var(--primario) 100%);
+        width: calc(100% / 4);
+        height: 120px;
+        transform-origin: top;
+        transform: rotateX(30deg);
+        box-shadow: 0 300px 20px rgba(0, 0, 0, 0.1);
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            background: transparent;
+            transform: rotateX(-30deg);
+
+            transform-origin: bottom;
+        }
+    }
+
+    .toldo-principio {
+        border-radius: 10px 0 0 10px;
+    }
+
+    .toldo-final {
+        border-radius: 0 10px 10px 0;
+    }
+
+}
+
+.popup-info {
+    position: absolute;
+    background-color: var(--secundario);
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    opacity: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px 0 50px 50px;
+    border: 3px solid var(--blanco);
+    z-index: 1000;
+    max-width: 300px;
+    max-height: calc(300px / 3);
+    pointer-events: none;
+    animation: aparecer 0.6s ease-in;
+
+    p{
+        margin: auto;
+    }
+
+}
+
+#simulador {
+
+    font-family: 'Poppins', sans-serif;
+    background: url('https://ideogram.ai/assets/image/lossless/response/9FzUNAIxTemaFHjV7_V7Hg') no-repeat center center;
+    background-size: contain;
+    width: 80%;
+    max-width: 80vw;
+    margin: auto;
+
+
+
+
+    .situacion,
+
+    .intro {
+        background-color: var(--primario);
+        border-radius: 5vw;
+        padding: 2.5% 7.5% 5% 7.5%;
+        margin: 30px auto;
+        border: 3px solid var(--primario);
+        box-shadow: 14px 16px 15px rgba(0, 0, 0, 0.1);
+        max-width: 60%;
+        height: 100%;
+        width: 100%;
+    }
+
+
+    .intro {
+        animation: aparecer 2s 1 ease-in forwards;
+
+    }
+
+    .intro-texto {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+
+
+
+    }
+
+    .situacion {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .situacion-texto {
+        width: 100%;
+    }
+
+    .situacion-imagen {
+        position: absolute;
+        top: 35%;
+        left: 20%;
+        object-fit: contain;
+        flex: 0 0 200px;
+    }
+
+    .situacion-imagen img {
+        height: 70%;
+        width: 70%;
+        max-height: 200px;
+        border-radius: 10px;
+    }
+
+    .opcion {
+        display: flex;
+        justify-content: space-around;
+        width: max-content;
+        align-items: center;
+    }
+
+    .icono-opcion {
+        display: block;
+        margin: auto;
+        width: 4em;
+        pointer-events: none;
+    }
+    .icono-dinero {
+        display: block;
+        margin: auto;
+        width: 4em;
+        pointer-events: none;
+    }
+
+
+    .opciones {
+        max-width: 80%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+
+    }
+
+    button {
+        max-width: max-content;
+        padding: 12px 25px;
+        font-size: 1.2em;
+        cursor: pointer;
+        background-color: var(--secundario);
+        color: var(--blanco);
+        font-weight: 700;
+        border: none;
+        border-radius: 50px;
+        transition: all 0.4s ease-in;
+    }
+
+
+    button:hover {
+        background-color: var(--secundario-opacidad);
+        transform: translateY(-8px);
+        color: var(--blanco);
+        font-size: 110%;
+        border: 3px solid var(--blanco);
+        box-shadow: 14px 16px 15px var(--primario);
+
+    }
+    button.siguiente {
+        position: absolute;
+        right: 10%;
+        background-color: var(--primario);
+        color: var(--blanco);
+        font-weight: 700;
+        border: none;
+        border-radius: 50px;
+    }
+    button.siguiente:hover {
+        font-size: 180%;
+        border: 3px solid var(--blanco);
+        transform: translateY(-8px);
+
+    }
+
+    #resultado {
+        margin: 20px auto;
+        font-weight: bold;
+        color: var(--blanco);
+        font-size: 20px;
+        max-width: 70%;
+        text-align: center;
+    }
+
+    .div_puntuacion {
+        border-radius: 8px;
+        padding: 10px 20px;
+        max-width: 100%;
+        width: 70%;
+        margin: auto;
+        text-align: center;
+    }
+
+    #presupuesto {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: max-content;
+        margin: auto;
+        border-radius: 50%;
+        margin-right:0;
+        margin-top: 20px;
+        background: var(--blanco);
+        padding: 15px 30px;
+        aspect-ratio: 1/1;
+
+    }
+
+    #presupuesto p {
+        font-size: 10px;
+        margin: auto;
+        color: var(--primario);
+        font-weight: bold;
+        height: max-content;
+        width: max-content;
+
+    }
+
+    .mascota {
+        position: fixed;
+        bottom: 0px;
+        right: 20px;
+        width: 100px;
+    }
+
+    .enunciado-escena {
+        background: var(--primario);
+        color: var(--blanco);
+        font-size: 1.35em;
+        padding: 20px 50px;
+        border-radius: 15px;
+        text-align: center;
+        padding: 15px 20px;
+        margin-bottom: 30px;
+    }
+
+
+    .siguiente-button {
+        text-align: center;
+        margin-top: 20px;
+        max-width: 100%;
+    }
+
+}
+
+@media(max-width:1400px) {
+    #simulador {
+        .icono-opcion {
+            width: 2em;
+        }
+    }
+}
+
+@media (max-width:1150px) {
+    .opciones {
+        flex-direction: column;
+
+    }
+
+    .opciones button {
+        max-width: 80%;
+        width: 100%;
+        margin: 5px auto;
+    }
+}
+
+@media (max-width:768px) {
+
+    .situacion {
+        flex-direction: column;
+    }
+
+    #presupuesto {
+        max-width: 70%;
+        text-align: center;
+    }
+
+    .enunciado-escena {
+        text-align: center;
+        padding: 0;
+    }
+
+    .situacion-imagen {
+        max-width: 30%;
+        margin: auto;
+        max-height: max-content;
+    }
+
+    .opciones button {
+        max-width: 100%;
+
+    }
+
+    .resultado {
+        font-size: 90%;
+    }
+
+    .div_puntuacion {
+        font-size: 80%;
+    }
+
+    .situacion-texto {
+        display: flex;
+        flex-direction: column;
+        place-items: center;
+        align-items: center;
+    }
+
+}
+
+@media (max-width:650px) {
+    #tit {
+        margin: auto;
+        font-size: 2.2em;
+    }
+}

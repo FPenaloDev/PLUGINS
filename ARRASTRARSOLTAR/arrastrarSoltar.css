@@ -1,0 +1,340 @@
+@import url('../color_curso.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+@keyframes sacudir {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+#ArrastrarSoltar {
+
+  font-family: 'Poppins', sans-serif;
+  padding: 5% 0 0 0;
+
+  .contenedor {
+    max-width: 90%;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .area-juego {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    justify-content: space-between;
+  }
+
+  .contenedor-arrastrables {
+    display: grid;
+    gap: 10px;
+    width: 80%;
+    margin: auto;
+    place-items: center;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .arrastrable {
+    background-color: var(--primario);
+    color: var(--terciario);
+    border-radius: 50px;
+    cursor: grab;
+    transition: all 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 80%;
+    padding: 10px;
+    font-size: 110%;
+    box-shadow: 0 4px 10px var(--primario);
+  }
+
+  .arrastrable:hover {
+    background: var(--terciario);
+    color: var(--secundario);
+    transform: translateY(-5px);
+    font-weight: 700;
+    box-shadow: 0 8px 15px var(--primario);
+  }
+
+  .arrastrable.arrastrando {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+
+  .contenedor-categorias {
+    display: flex;
+    gap: 20px;
+    width: 80%;
+    margin: 0 auto 5% auto;
+    max-height: 90vh;
+  }
+
+  .categoria {
+    background-color: var(--blanco);
+    border: 2px solid var(--primario);
+    border-radius: 8px;
+    display: flex;
+    width: 100%;
+    min-height: 30vh;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 10px 14px 6px var(--primario-opacidad);
+    transition: all 0.3s ease;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  .categoria:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+  }
+
+  .categoria h3 {
+    background: var(--primario);
+    color: var(--terciario);
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+
+  .item {
+    border: 2px solid var(--primario);
+    background: var(--secundario);
+    color: var(--terciario);
+    font-weight: 650;
+    padding: 8px;
+    margin: auto;
+    border-radius: 25px;
+    width: 70%;
+    text-align: center;
+    transition: all 0.3s ease;
+    font-size: 130%;
+  }
+
+  .item:hover {
+    background-color: var(--primario);
+    color: var(--secundario);
+    transform: translateY(-2px);
+  }
+
+  .resaltado {
+    border: 2px dashed var(--secundario);
+    background-color: rgba(255, 204, 99, 0.1);
+  }
+
+  .incorrecto {
+    animation: sacudir 0.5s;
+  }
+
+
+
+  .controles {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 0;
+    color: #fff;
+    transition: all 0.4s ease;
+  }
+
+  /* Estilos del botón */
+  #botonReiniciar {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: var(--primario);
+    color:var(--terciario);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Estilos del icono */
+  .icono-reiniciar {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.8s ease-in;
+
+  }
+
+
+
+  /* Estilos del texto */
+  .texto-reiniciar {
+    max-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 18pt;
+    transition: max-width 0.8s ease-in-out, opacity 0.3s ease-in-out, margin-left 0.8s ease;
+  }
+
+  #botonReiniciar:hover .icono-reiniciar {
+    transform: rotate(470deg) !important;
+
+  }
+
+  #botonReiniciar:hover .texto-reiniciar {
+    max-width: 150px;
+    opacity: 1;
+    margin-left: 10px;
+  }
+
+  #botonReiniciar:hover {
+    background: var(--primario-opacidad);
+    color: var(--terciario);
+    border: 3px solid var(--secundario);
+    box-shadow: 3px 3px 6px var(--secundario);
+
+    svg path {
+      transition: all 0.4s ease-in;
+      stroke: var(--terciario);
+    }
+  }
+
+  button:hover {
+    color: #fff;
+    background-color: var(--color-secundario);
+    border: 0;
+    font-weight: 550;
+    transform: translateY(-5px);
+  }
+
+  #popup.modal {
+    font-family: 'Poppins';
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contenido-modal {
+    background-color: var(--blanco);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 50%;
+  }
+
+  .cerrar-modal {
+    background-color: var(--primario);
+    color: var(--secundario);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.5s ease-in;
+  }
+
+  .cerrar-modal:hover {
+    background-color: var(--primario-opacidad);
+    color: var(--secundario);
+    border-radius: 50px;
+    border: 3px solid var(--secundario);
+    font-size: 1.3rem;
+    font-weight: 750;
+    box-shadow: 14px 8px 10px var(--primario);
+    transform: translateY(-5px) scale(1.05);
+
+  }
+
+
+
+  @media (max-width: 1024px) {
+    .area-juego {
+      flex-direction: column;
+    }
+
+    .contenedor-arrastrables,
+    .contenedor-categorias {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .categoria {
+      min-width: 45%;
+      /* Ajusta el ancho máximo de cada categoría */
+      flex: 1 1 45%;
+      /* Asegura que las categorías no excedan el 50% del ancho */
+    }
+
+    .contenedor-categorias {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      /* Espacio entre categorías */
+    }
+
+    .arrastrable {
+      width: 100%;
+      font-size: 0.7rem;
+    }
+
+    .categoria h3 {
+      font-size: 0.9rem;
+    }
+
+    .item {
+      font-size: 0.8rem;
+    }
+  }
+
+
+  @media (max-width: 768px) {
+    .contenedor-arrastrables {
+      grid-template-columns: none;
+    }
+
+    #botonReiniciar {
+      width: 50%;
+      margin: auto;
+    }
+
+    .arrastrable {
+      width: 50%;
+    }
+
+    .controles {
+      flex-direction: column;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,76 @@
+@import url('../../colores_curso.css');
+
+.calculadoraROI {
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.calculadoraROI .linea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.calculadoraROI label {
+    color: var(--primario);
+    font-weight: 700;
+    font-size: 1.3em;
+    margin-right: 20px;
+}
+
+.calculadoraROI input {
+    width: 30%;
+    padding: 2%;
+    padding-right: 0%;
+    border-radius: 20px;
+    border: 2px solid var(--secundario);
+    -moz-appearance: textfield;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+}
+
+.calculadoraROI input:focus {
+    border-color: transparent;
+}
+
+.calculadoraROI .no-spinner {
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.calculadoraROI .no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+
+.calculadoraROI button {
+    width: 10%;
+    background: var(--primario);
+    padding: 1%;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s ease-in;
+    margin: 0 45%;
+}
+
+.calculadoraROI button:hover {
+    background: var(--primario-opacidad);
+    transform: translateY(-5px);
+}
+
+.calculadoraROI #resultado {
+    color: var(--primario);
+    font-weight: 700;
+    font-size: 1.6em;
+    text-align: center;
+}

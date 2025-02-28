@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('../color_curso.css');
+:root {
+    --color-principal: #f2f2f2;
+    --color-secundario: #FF6584;
+    --color-fondo: #F0F2F5;
+    --color-texto: #333;
+    --color-exito: #4CAF50;
+    --color-error: #FF5252;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-fondo);
+    color: #064A6D;
+    overflow-y: auto;
+}
+
+.contenedor-cuestionario {
+    display: flex;
+    margin-top: 3.5%;
+    flex-direction: column;
+    width: 100%;
+}
+
+.fila-pregunta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.contenedor-pregunta {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.barra-lateral {
+    width: 90%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    height: max-content;
+    margin: 0 auto;
+}
+
+.contenido-principal {
+    width: 70%;
+    height: max-content;
+    padding: 0.8%;
+    scrollbar-width: none;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #064A6D;
+    text-align: center;
+}
+
+p {
+    color: var(--primario);
+    text-align: center;
+    font-size: 1.4em;
+}
+
+.contenedor-progreso {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.barra-progreso {
+    width: 70%;
+    height: 1em;
+    margin: 10px auto;
+    border: 3px solid var(--primario);
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progreso {
+    height: 100%;
+    background-color: var(--secundario);
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.contenedor-pregunta {
+    background-color: var(--blanco);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.contenedor-pregunta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px var(--primario-opacidad);
+}
+
+.icono-feedback {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.contenedor-botones {
+    position: relative;
+    top: 0%;
+    left: 1.5%;
+    width: 97%;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding-top: 30px;
+    /* padding: 0 0 1% 0; */
+    background: #f2f2f2;
+}
+
+.contenedor-botones button {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: var(--primario);
+    color: var(--blanco);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    padding: 10px 15px;
+    box-shadow: 0 2px 5px var(--primario-opacidad);
+}
+
+.contenedor-botones button:hover {
+    background: rgba(6, 74, 109, 0.8);
+    color: white;
+    border: 3px solid white;
+    box-shadow: 3px 3px 6px var(--primario-opacidad);
+}
+
+.contenedor-botones button svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.8s ease-in;
+}
+
+.contenedor-botones button .texto-boton {
+    max-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 18pt;
+    transition: max-width 0.8s ease-in-out, opacity 0.3s ease-in-out, margin-left 0.8s ease;
+}
+
+.contenedor-botones button:hover svg {
+    transform: rotate(360deg) !important;
+}
+
+.contenedor-botones button:hover .texto-boton {
+    max-width: 150px;
+    opacity: 1;
+    margin-left: 10px;
+}
+
+.resultado {
+    text-align: center;
+    margin: 2% 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.div_input {
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+
+.titulo-input {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    font-size: 120%;
+}
+
+input[type="text"] {
+    width: 40%;
+    padding: 8px 10px;
+    margin: 0.5% 0;
+    margin-left: 10%;
+    font-size: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #064A6D;
+    box-shadow: 0 0 5px #163d73b0;
+}
+
+#formulario-cuestionario {
+    padding: 3%;
+}
+
+.texto-cuestionario {
+    display: flex;
+}
+
+.inputs-cuestionario {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.inputs-cuestionario input {
+    float: right;
+}
+
+label {
+    height: max-content;
+    padding: 0 3%;
+    margin: auto;
+    font-size: 18px;
+}
+
+img {
+    max-width: 60%;
+    width: 100%;
+    margin: auto;
+    object-fit: contain;
+    border-radius: 20px;
+
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-overlay.mostrar {
+    display: flex !important;
+}
+
+
+
+#popup-formulas {
+    display: flex;
+    position: fixed;
+    width:40%;
+    z-index: 1000;
+    aspect-ratio: 16/9;
+    /* Por encima del overlay */
+    background: white;
+    padding: 20px 5%;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease;
+    height:max-content;
+    align-items: center;
+}
+
+.popup-contenido {
+    position: relative;
+}
+
+#cerrar-popup {
+    position:absolute;
+    top:5%;
+    right:3%;
+    font-size:1.6em;
+    padding:0.125em 0.6em;
+    background:#ffffffb0;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    color:#163d73;
+    border:2px solid #163d73;
+    cursor:pointer;
+    transition: all 0.3s ease-in;
+}
+
+#cerrar-popup:hover {
+    box-shadow: none;
+    background: #163d73;
+    color:#fff;
+    border-color:#163d73;
+}
+
+
+
+@media (max-width:1024px) {
+    .texto-cuestionario {
+        flex-direction: column;
+    }
+
+    label {
+        width: 100%;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .contenedor-cuestionario {
+        margin-top: 4em;
+        flex-direction: column;
+    }
+
+    .barra-lateral,
+    .contenido-principal {
+        width: 100%;
+    }
+
+    p {
+        font-size: 1.1em;
+        padding: 0 0 5% 0;
+    }
+
+    .barra-lateral {
+        padding: 20px;
+    }
+
+    .barra-progreso {
+        margin: 0 auto 5% auto;
+    }
+}

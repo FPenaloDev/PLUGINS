@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('../color_curso.css');
+
+:root {
+  --primer-color: var(--primario);
+  --segundo-color: var(--secundario);
+  --tercer-color: var(--terciario);
+  --fondo-diapositiva: var(--gris);
+}
+
+#carrusel-v2 {
+  .contenedor-carrusel {
+    font-family: 'Poppins';
+    width: 100%;
+    max-width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    background: var(--fondo-diapositiva);
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    aspect-ratio: 3/1;
+  }
+  
+
+  .contenedor_diapositiva {
+    display: flex;
+    justify-content: space-between;
+    min-height: 100%;
+  }
+
+  em,
+  strong {
+    color: var(--primer-color);
+  }
+
+  .titulo_diapositiva {
+    font-size: 3em;
+    max-width: max-content;
+    margin: auto;
+    padding-top: 50px;
+
+  }
+
+  .contenedor-imagen {
+    display: flex;
+    max-width: 30%;
+    margin: auto;
+  }
+
+  .contenedor-imagen img {
+    width: 100%;
+    height: auto;
+  }
+
+  .contenedor-texto-botones {
+    display: flex;
+    max-width: 45%;
+    flex-direction: column;
+    max-height: inherit;
+    height: 90%;
+    margin: auto;
+  }
+
+  .contenedor-texto {
+    max-width: 90%;
+    font-size: 19px;
+    height: 100%;
+    max-height: 80%;
+    margin: auto;
+    color: var(--negro);
+
+    h2 {
+      color: var(--primario);
+    }
+  }
+
+  .contenedor-botones {
+    display: flex;
+    max-width: max-content;
+    height: 10%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+  }
+
+  .contenedor-botones button:disabled {
+    background: var(--gris-disabled);
+  }
+  .contenedor-botones button {
+    border: none;
+    display: flex;
+    align-items: center;
+    background: var(--secundario);
+    aspect-ratio: 1/1;
+    border-radius: 50px;
+    width: 50px;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+
+  .contenedor-botones button svg {
+    max-width: max-content;
+    margin: auto;
+  }
+
+  .contenedor-botones button svg path {
+    fill: #fff;
+  }
+
+  .contenedor-botones button:hover {
+    background: var(--primer-color);
+  }
+
+  .contenedor-botones button:hover svg path {
+    fill: var(--tercer-color);
+  }
+
+  #boton-back {
+    transform: rotate(-180deg);
+  }
+
+  @media (max-width:1000px) {
+    .contenedor_diapositiva {
+      flex-direction: column;
+    }
+
+    .contenedor-imagen {
+      max-width: 90% !important;
+    }
+
+    .contenedor-texto-botones {
+      width: 100%;
+      max-width: 90% !important;
+    }
+
+    .contenedor-texto {
+      font-size: 16px;
+    }
+  }
+}

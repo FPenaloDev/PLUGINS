@@ -1,0 +1,55 @@
+@import url('../color_curso.css');
+:root {
+
+  /*PISTAS*/
+  --background-div-pistas: var(--primario-opacidad);
+  --borde-div-pistas: var(--primario);
+  --background-pistas: var(--terciario);
+  --borde-pistas: var(--secundario);
+  --color-pistas: var(--secundario);
+  --background-contador:var(--primario);
+  --color-contador:var(--secundario);
+  --color-titulo:var(--secundario);
+  --borde-titulo-pistas:var(--secundario);
+  
+  /*PISTAS SI*/
+  --background-pista-palabra-encontrada: var(--secundario);
+  --color-pista-encontrada: var(--primario);
+  --borde-pista-encontrada: var(--primario);
+
+  /*PISTAS NO*/
+  --background-pista-palabra-no-encontrada:var(--blanco-opacidad);
+  --borde-pista-no-encontrada: rgb(185, 16, 16);
+  --color-pista-no-encontrada: rgb(185, 16, 16);
+
+  /*BOTONES*/
+  --background-boton-soluciones: var(--primario);
+  --background-boton-soluciones-hover: var(--primario-opacidad);
+  --color-boton-soluciones: var(--secundario);
+  --color-boton-soluciones-hover: var(--secundario);
+
+  /*CELDAS*/
+  --borde-celdas-sopa: #000;
+  --background-celda: var(--secundario);
+
+  --background-celda-hover: var(--secundario-opacidad);
+  --color-celda-hover: var(--blanco);
+
+  --background-celda-seleccionado: var(--secundario);
+  --color-celda-seleccionado:var(--primario);
+
+  /*LETRAS SI*/
+  --background-letra-encontrada: var(--secundario);
+  --color-letra-encontrada: var(--primario);
+  --borde-letra-encontrada: var(--primario);
+
+  /*LETRAS NO*/
+  --background-letra-no-encontrada: #da3f3f44;
+  --borde-letra-no-encontrada: rgb(201, 13, 13);
+  --color-letra-no-encontrada: rgb(201, 13, 13);
+
+  /*ICONOS*/
+  --acierto: var(--primario);
+  --error: #db6565;
+
+}

@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Montserrat:wght@700&display=swap');
+
+:root {
+  /* CREAR VARIABLES DE ELEMENTOS */
+  --color-primary: #163d73;
+  --color-secondary: #ff006e;
+  --color-background: #f8f9fa;
+  --color-surface: #ffffff;
+  --color-text: #333333;
+  --color-accent: #bf4e63;
+  --color-success: #06d6a0;
+  --color-error: #ef476f;
+  --font-primary: 'Poppins';
+  --font-secondary: 'Poppins';
+  --transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --color-icono-boton:#163d73;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.borde_externo {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-radius: 20px;
+  padding: 3px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.actividad_speaking {
+  margin: auto;
+  padding: 2rem;
+  max-width: 800px;
+  width: 90vw;
+  border-radius: 18px;
+}
+
+.contenedor_frase {
+  margin:auto;
+}
+
+#numero_frase {
+  margin: auto;
+  margin-bottom:3%;
+  font-family: var(--font-secondary);
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color-surface);
+  background: var(--color-primary);
+  aspect-ratio: 1 / 1;
+  padding: 11px 30px;
+  border-radius: 50%;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#palabra {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  text-align: center;
+  flex-grow: 1;
+  font-weight: 500;
+  margin:0;
+}
+
+.espectro_audio {
+  height: 150px;
+  margin: 0.3rem auto;
+  max-width:90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-radius: 15px;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.espectro_audio div {
+  width: 2%;
+  background: var(--color-primary);
+  border-radius: 4px;
+  transition: height 0.1s ease-out;
+}
+
+#palabras_dichas {
+  font-weight:500;
+  font-size:130%;
+  border:2px solid #000000b0;
+}
+#palabras_dichas,
+#resultados {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+  display: none;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+}
+
+#resultados {
+  width:max-content;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.contenedor_botones {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 0;
+}
+
+.contenedor_botones button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  font-family: var(--font-primary);
+  font-size: 1.2vw;
+  font-weight: 500;
+  color: var(--color-primary);
+  cursor: pointer;
+  border:  1px solid #bf4e63;
+  border-right:8px solid #bf4e63;
+  border-radius: 100px;
+  padding:2%;
+  background: var(--color-surface);
+  transition: var(--transition);
+  box-shadow: 20px 0 6px rgba(0, 0, 0, 0.1);
+}
+#start-button svg ,#listen-button svg{
+  width:60%;
+}
+.contenedor_botones button svg {
+  width: 50%;
+  object-fit: contain;
+  margin: auto;
+  fill: var(--color-icono-boton);
+}
+.contenedor_botones button svg #path_1{
+  fill:none;
+  stroke:var(--color-icono-boton);
+
+}
+.contenedor_botones button:hover {
+  background: var(--color-primary);
+  color: #fff;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  border-color: #163d73;
+  svg{
+    fill: var(--color-surface) !important;
+    #path_1 {
+      stroke: #fff !important;
+    }
+  }
+}
+
+.contenedor_botones button:hover svg #path_1 {
+  stroke: var(--color-icono-boton);
+}
+
+@media (max-width: 1000px) {
+  .actividad_speaking {
+    padding: 1.5rem;
+  }
+
+
+  .contenedor_botones button {
+    width: 90px;
+    height: 90px;
+    font-size: 0.95em;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .actividad_speaking {
+    padding: 1rem;
+  }
+
+  #numero_frase {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .contenedor_botones {
+    flex-wrap: wrap;
+  }
+
+  .contenedor_botones button {
+    width: 60px;
+    height: 60px;
+    font-size: 0.7em;
+    margin: 0.5rem;
+  }
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.espectro_audio div:nth-child(odd) {
+  animation: pulse 2s infinite;
+}
+
+.espectro_audio div:nth-child(even) {
+  animation: pulse 2s infinite 0.5s;
+}
+
+#palabra span {
+  display: inline-block;
+  transition: var(--transition);
+}
+
+#palabra span:hover {
+  transform: translateY(-2px);
+  color: var(--color-accent);
+}
+
+#resultados[style*="display: block"] {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.contenedor_botones button:active {
+  transform: scale(0.95);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}

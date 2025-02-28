@@ -1,0 +1,15 @@
+@import url('../color_curso.css');
+:root{
+    --background-actividad:var(--gris);
+    --sombra-actividad:var(--primario-opacidad);
+    --color-titulo:var(--negro);
+    --color-titulo-pistas:var(--primario);
+    --background-texto-pistas:var(--primario);
+    --color-texto-pistas:var(--gris);
+    --corazones:var(--primario);
+    --borde-corazones:transparent;
+    --background-boton-intentar:var(--primario);
+
+    --background-boton-popup:var(--primario);
+    --background-boton-popup-hover:var(--primario-opacidad);
+}

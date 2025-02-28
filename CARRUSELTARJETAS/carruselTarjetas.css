@@ -1,0 +1,565 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+@import url('../color_curso.css');
+
+#carrusel-tarjetas {
+  font-family: 'Poppins';
+
+  h2 {
+    padding-left: 3%;
+    font-weight: 500;
+    font-size: 5vw;
+    margin: 0;
+  }
+
+  p {
+    font-size: 0.5rem;
+    text-align: left;
+    margin: 50px 20px;
+  }
+
+  :disabled {
+    opacity: 0.2;
+  }
+
+  .carrusel {
+    display: flex;
+    overflow: hidden;
+    margin: auto;
+    max-width: 75%;
+    width: 100%;
+    height: max-content;
+    position: relative;
+    z-index: 2;
+  }
+
+  .pista-carrusel {
+    border-radius: 20px;
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+  }
+
+  .seccion-carrusel {
+    border-radius: 20px;
+    flex: 0 0 100%;
+    display: flex;
+    max-height: max-content;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .contenedor-tarjetas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+  }
+
+  .tarjeta {
+    width: 22%;
+    height: auto;
+    aspect-ratio: 1/2;
+    border-radius: 20px;
+    transition: all 0.4s ease-in;
+  }
+
+  .tarjeta:hover {
+    transform: translateY(-10px);
+
+    svg circle {
+      fill: var(--primario);
+      opacity: 0.4;
+    }
+
+    svg circle {
+      stroke: var(--primario);
+    }
+
+    svg text {
+      fill: var(--primario);
+    }
+  }
+
+  .tarjeta-interna {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .tarjeta-interna.volteada {
+    transform: rotateY(180deg) !important;
+  }
+
+  .tarjeta-frontal,
+  .tarjeta-trasera {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+
+  .contenidos-tarjeta {
+    height: 45%;
+  }
+
+  .tarjeta-frontal {
+    background-color: #e8e8e8;
+    color: #505050;
+    border: 3px solid #d5d7d8;
+  }
+
+  .div-titulo-icono {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  .titulo-trasera {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-size: 28px;
+    margin: initial;
+    font-weight: 900;
+    color: #064a6d;
+  }
+
+  .tarjeta-trasera {
+    padding-bottom: 3em;
+    background-color: #e8e8e8;
+    color: #191919;
+    border: 3px solid var(--primario);
+    transform: rotateY(180deg);
+    max-height: inherit;
+    margin: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: var(--primario-opacidad) transparent;
+  }
+
+  .tarjeta-trasera p {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    max-height: 100%;
+    font-size: 16px;
+    justify-content: flex-start;
+
+    strong {
+      font-size: 22px;
+      color: var(--primario) !important;
+      font-weight: bold !important;
+    }
+  }
+
+  .titulo-tarjeta {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--primario);
+    margin: 15px 0;
+
+  }
+
+  .icono {
+    height: 50%;
+    border-radius: 20px;
+    display: flex;
+    width: inherit;
+    font-size: 3em;
+  }
+
+  .titulo {
+    margin-left: 12px;
+  }
+
+  .titulo h2 {
+    font-size: 2em;
+  }
+
+  .titulo p {
+    margin: 10px 0;
+    font-size: 2em;
+  }
+
+  .imagen-svg {
+    display: flex;
+    align-items: center;
+    margin-top: 30%;
+
+  }
+
+  .imagen-svg svg {
+    margin: auto;
+    width: 80%;
+    aspect-ratio: 1/1;
+
+    circle {
+      fill: var(--primario);
+    }
+
+    text {
+      fill: #fff;
+    }
+  }
+
+  .icono img {
+    display: block;
+    margin: auto;
+    margin-top: 0;
+    width: 90%;
+    border-radius: 30px;
+    border: 3px solid var(--primario);
+  }
+
+  .icono-click {
+    width: 20%;
+    margin: 0;
+    display: block;
+    margin-left: auto;
+  }
+
+  /* Controles del carrusel */
+  .controles-carrusel {
+    position: absolute;
+    top: 55%;
+    left: 3%;
+    width: 94%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: none;
+    z-index: 1;
+
+  }
+
+  .controles-carrusel button {
+    background: var(--primario);
+    color: var(--blanco);
+    height: max-content;
+    border: none;
+    padding: 10px 20px;
+    font-size: 250%;
+    cursor: pointer;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    margin: 0;
+    transition: all 0.3s ease-in;
+  }
+
+  .controles-carrusel button:hover {
+    background: var(--blanco);
+    color: var(--primario);
+    border: 3px solid var(--primario);
+  }
+
+  .icono-scroll {
+    left: 70%;
+    bottom: 2%;
+    width: 30%;
+  }
+
+  .raton {
+    width: calc(2 * 2%);
+    padding: 10% 15.5%;
+    height: calc(2 * 40%);
+    border: 2px solid #000;
+    border-radius: 25px;
+    opacity: 0.75;
+    box-sizing: content-box;
+    position: relative;
+  }
+
+  .raton::before {
+    content: '';
+    width: 10%;
+    height: 20%;
+    left: calc(46%);
+    top: 0%;
+    position: absolute;
+    background-color: #000;
+    border-radius: 50px;
+    animation: scrollear 2s infinite;
+    transform: translateX(-50%);
+  }
+
+  .boton-izquierdo {
+    position: absolute;
+    width: 25%;
+    height: 30%;
+    border: 2px solid #000;
+    border-radius: 20px 10px 10px 10px;
+    top: 8%;
+    left: 10%;
+  }
+
+  .boton-derecho {
+    position: absolute;
+    width: 25%;
+    height: 30%;
+    border: 2px solid #000;
+    border-radius: 10px 20px 10px 10px;
+    top: 8%;
+    right: 10%;
+  }
+
+
+  .flechas {
+    position: relative;
+    top: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .flechas span {
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-bottom: 2px solid #333;
+    border-right: 2px solid #333;
+    transform: rotate(45deg);
+    margin-top: -6px;
+    animation: animacionFlecha 2s infinite;
+  }
+
+  .flechas span:nth-child(2) {
+    animation-delay: -0.2s;
+  }
+
+  .flechas span:nth-child(3) {
+    animation-delay: -0.4s;
+  }
+
+  @keyframes scrollear {
+    0% {
+      opacity: 0;
+      transform: translateY(20%);
+    }
+
+    50% {
+      opacity: 1;
+      transform: translateY(50%);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+  }
+}
+
+@keyframes animacionFlecha {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-5px, -5px);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(1px, 1px);
+  }
+}
+
+@media (max-width:1450px) {
+  #carrusel-tarjetas {
+    .tarjeta {
+      max-height: 60vh;
+    }
+
+    .titulo-tarjeta {
+      font-size: 18px;
+    }
+
+    .icono {
+      width: 100%;
+    }
+
+    .icono-click {
+      width: 30%;
+    }
+
+    .tarjeta-trasera p {
+      padding-left: 10px;
+      padding-right: 10px;
+      margin: 0 auto;
+      font-size: 0.9rem;
+    }
+
+    .titulo-trasera {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media (max-width:970px) {
+  #carrusel-tarjetas {
+    .tarjeta {
+      max-height: 40vh;
+    }
+
+    .icono {
+      margin: auto;
+    }
+
+    .icono-click {
+      width: 20%;
+    }
+
+
+    .controles-carrusel {
+      top: 50%;
+      left: 5%;
+      width: 90%;
+    }
+
+    .titulo-trasera {
+      font-weight: 500;
+      color: var(--primario);
+    }
+
+    .tarjeta {
+      width: 40%;
+    }
+
+    .tarjeta-trasera p {
+      font-size: 14px;
+    }
+
+    .controles-carrusel button {
+      font-size: 1.5em;
+    }
+
+    .titulo-tarjeta {
+      font-size: 22px;
+    }
+
+    .imagen-svg svg {
+      width: 40%;
+    }
+
+  }
+}
+
+@media (max-width:768px) {
+  #carrusel-tarjetas {
+    .carrusel {
+      max-width: 80%;
+    }
+
+    .tarjeta {
+      width: 100%;
+      max-height: 35vh;
+    }
+
+    .contenidos-tarjeta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-height: 90%;
+    }
+
+    .seccion-carrusel {
+      position: relative;
+      padding: 0;
+    }
+
+    .contenedor-tarjetas {
+      max-width: 90%;
+      position: relative;
+      left: 5%;
+    }
+
+    .icono {
+      max-height: 100%;
+      object-fit: contain;
+      margin: 10px 0;
+      align-items: center;
+    }
+
+    .icono img {
+      max-height: 100%;
+      width: auto;
+    }
+
+    .imagen-svg svg {
+      width: 60%;
+
+      circle {
+        r: 40%;
+      }
+
+      text {
+        font-size: 1.4em;
+      }
+
+    }
+
+
+    .icono-click {
+      width: 10%;
+
+    }
+
+    .titulo-tarjeta {
+      padding-left: 5%;
+      margin-bottom: 0px;
+      text-align: left;
+    }
+
+    .titulo-tarjeta,
+    .titulo-trasera {
+      font-size: 22px;
+      font-weight: bold;
+
+    }
+
+    .titulo-trasera {
+      margin-bottom: 10px;
+    }
+
+    .tarjeta-trasera p {
+      margin: auto;
+      font-size: 17px;
+    }
+
+    .controles-carrusel {
+      width: 97%;
+      left: 1.5%;
+    }
+
+    .controles-carrusel button {
+      padding: 0 4vw;
+      font-size: 1.4em;
+    }
+  }
+}
+
+@media (max-width:550px) {
+  #carrusel-tarjetas {
+    .icono-click {
+      top: 10%;
+    }
+  }
+}

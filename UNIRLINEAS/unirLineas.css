@@ -1,0 +1,363 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('../color_curso.css');
+
+:root {
+    --color-texto-concepto: var(--blanco);
+    --color-texto-concepto-hover: var(--blanco);
+    --background-concepto-izquierdo: var(--terciario);
+    --background-concepto-hover: var(--primario);
+    --background-concepto-derecho: var(--secundario);
+    --texto-indicador-fase: var(--blanco);
+    --boton-popup: var(--secundario);
+    --boton-popup-hover: var(--secundario);
+}
+@keyframes sacudir {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    50% {
+        transform: translateX(10px);
+    }
+
+    75% {
+        transform: translateX(-10px);
+    }
+}
+
+.sacudir {
+    animation: sacudir 0.75s;
+    background-color: #c12525 !important;
+    color: white !important;
+}
+/* Estilos para el overlay (fondo oscuro) */
+#overlayPopup {
+
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    z-index: 5;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    
+    .overlay {
+        top: 0;
+        left: 0;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        cursor: pointer;
+    }
+    
+    /* Estilos para el popup */
+    .popupContent {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        max-width: 500px;
+        top:35%;
+        left:35%;
+        width: 80%;
+        z-index: 6;
+        position: absolute;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Estilo para el título */
+    .popupContent h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    /* Estilo para el mensaje */
+    .popupContent p {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    /* Estilo para el botón de cierre */
+    .popupContent button {
+        background: var(--boton-popup);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: all 0.4s ease-in;
+
+    }
+
+    .popupContent button:hover {
+        background-color: var(--boton-popup-hover);
+        transform: translateY(-7px) scale(1.25);
+        border-radius: 50px;
+        border: 3px solid var(--blanco);
+        box-shadow:6px 6px 6px var(--secundario);
+        transition: all 0.4s ease-in;
+    }
+}
+
+#actividad_unir {
+    background: #ffffffce;
+    width: 90%;
+    margin: 20px auto;
+    margin-top: 5%;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 30px;
+
+    .juego {
+        display: flex;
+        gap: 20%;
+        /* Ajuste del espacio entre las columnas */
+        margin-top: 3em;
+
+    }
+
+    .columna {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        max-width: 100%;
+        height: max-content;
+    }
+
+    #columnaIzquierda {
+        align-items: center;
+        max-height: max-content;
+        margin: auto !important;
+    }
+
+    #columnaIzquierda .concepto {
+        color: var(--color-texto-concepto);
+        background: var(--background-concepto-izquierdo);
+        border-radius: 5px;
+        padding: 20px;
+        margin: auto;
+        max-width: 80%;
+    }
+
+    #columnaDerecha {
+        max-width: 100%;
+        align-items: center;
+        max-height: max-content;
+        margin: auto;
+    }
+
+    #columnaDerecha .concepto {
+        color: var(--color-texto-concepto);
+        background: var(--background-concepto-derecho);
+        padding: 20px;
+        margin:auto;
+        max-width: 80%;
+
+    }
+
+    .concepto {
+        width: 100%;
+        max-width: max-content;
+        background-color: #fff;
+        color: var(--primario);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 10px var(--primario-opacidad);
+        padding: 0%;
+        box-sizing: border-box;
+        z-index: 2;
+    }
+
+    .concepto img {
+        width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+
+
+    .concepto.emparejado {
+        background: rgba(4, 153, 4, 0.651) !important;
+        color: #fff !important;
+    }
+
+    .concepto p {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.2;
+        width: 100%;
+        word-break: break-word;
+    }
+
+    .columna .concepto:hover {
+        transform: translateY(-5px);
+        background-color: var(--background-concepto-hover) !important;
+        color: var(--color-texto-concepto-hover) !important;
+    }
+
+    .linea {
+        position: absolute;
+        /* Asegura que las líneas se posicionen sobre el contenedor */
+        height: 3px;
+        /* Ajuste a 3px para líneas horizontales */
+        background-color: #2ecc71;
+        /* Color de la línea */
+        transform-origin: left center;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: 1;
+        border-radius: 1.5px;
+    }
+
+    .linea.activa,
+    .linea.correcta {
+        opacity: 1;
+    }
+
+    .linea.correcta {
+        background-color: var(--secundario);
+    }
+
+    #mensajeFinal {
+        position: fixed;
+        bottom: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #2ecc71;
+        color: var(--primario);
+        padding: 20px 30px;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+        z-index: 1000;
+        display: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #indicadorProgreso {
+        width: max-content;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 600;
+        background: var(--primario);
+        border-radius: 50px;
+        height: max-content;
+        position: relative;
+        z-index: 3;
+        color: var(--texto-indicador-fase);
+        text-align: center;
+        margin: 10px auto;
+        padding: 10px;
+    }
+
+
+
+
+
+    /* Tablets */
+    @media (max-width: 1024px) {
+        #actividad_unir {
+            width: 95%;
+            gap: 5%;
+            padding: 15px;
+        }
+
+        .concepto {
+            max-width: 120px;
+        }
+
+        #columnaDerecha .concepto p {
+            font-size: 0.9rem;
+        }
+    }
+
+    /* Mobile landscape */
+    @media (max-width: 768px) {
+        #actividad_unir {
+            gap: 3%;
+            padding: 10px;
+        }
+
+        #columnaIzquierda {
+            height: max-content;
+            margin: auto;
+
+        }
+
+        .concepto {
+            max-width: 100px;
+        }
+
+        #columnaDerecha .concepto p {
+            font-size: 0.8rem;
+        }
+
+        #mensajeFinal {
+            font-size: 1rem;
+            padding: 15px 25px;
+        }
+    }
+
+    /* Mobile portrait */
+    @media (max-width: 600px) {
+        #actividad_unir {
+            width: 98%;
+            gap: 2%;
+            padding: 5px;
+        }
+
+        .concepto {
+            max-width: 15%;
+            padding: 5px;
+        }
+
+        #columnaIzquierda .concepto {
+            padding: 8px;
+        }
+
+        #columnaDerecha .concepto p {
+            font-size: 0.5rem;
+        }
+
+        #indicadorProgreso {
+            font-size: 1rem;
+        }
+
+        #mensajeFinal {
+            width: 80%;
+            font-size: 0.9rem;
+            padding: 12px 20px;
+        }
+    }
+
+    /* Para pantallas muy pequeñas */
+    @media (max-width: 360px) {
+        .concepto {
+            max-width: 20px;
+            font-size: 10%;
+        }
+
+        #columnaDerecha .concepto p {
+            font-size: 0.1rem;
+        }
+    }
+
+}
