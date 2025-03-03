@@ -172,7 +172,7 @@ p {
 .text-image-container,.youtube-container {
   display: flex;
   align-items: center;
-  width: 90%;
+  max-width: 90%;
   margin: 0 auto;
   height: 100%;
   /* Se ajusta al 100% de la altura de la ventana */
@@ -312,7 +312,7 @@ span svg {
     max-height: max-content;
   }
 
-  .text-image-container {
+  .text-image-container,.youtube-container {
     flex-direction: column;
     gap: 2rem;
   }
