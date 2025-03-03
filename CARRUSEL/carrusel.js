@@ -1,15 +1,20 @@
 export function carrusel(contenedor, secciones) {
+  if(document.getElementById('css')){
+    document.getElementById('css').remove();
+  } else {
   const css = document.createElement('link');
   css.rel = 'stylesheet';
+  css.id = 'css';
   css.type = 'text/css';
-  css.href = '../PLUGINS/CARRUSEL/carrusel.css';
+  css.href = './PLUGINS/CARRUSEL/carrusel.css';
+  }
 
   document.head.appendChild(css);
 
   contenedor.innerHTML =
     `<div class="div-botones">
-          <button id="anterior">&#9664;</button>
-          <button id="siguiente">&#9654;</button>
+          <button class="anterior" id="anterior">&#9664;</button>
+          <button class="siguiente" id="siguiente">&#9654;</button>
         </div>
       <div class="div-carrusel">
         <div class="div-diapositivas" id="carrusel"></div>
@@ -17,21 +22,18 @@ export function carrusel(contenedor, secciones) {
       <div class="paginacion" id="paginacion"></div>`;
 
   function ajustarPosicionBotones() {
-    const paginacion = document.getElementById('carrusel');
+    const carrusel = document.querySelector('.activa');
     const divBotones = document.querySelector('.div-botones');
 
-    // Obtener el rectángulo del contenedor de paginación
-    const paginationRect = paginacion.getBoundingClientRect();
-
-    // Calcular la posición en la que deben estar los botones
-    const topPosition = (paginationRect.height/2); // Añadir scroll vertical si es necesario
-
     // Actualizar estilos para posicionar los botones
-    divBotones.style.position = 'absolute';
-    divBotones.style.top = `${topPosition}px`;
+    divBotones.style.position = 'relative';
     divBotones.style.left = '50%';
     divBotones.style.transform = 'translateX(-50%)';
     divBotones.style.zIndex = '1000'; // Asegurarse de que esté por encima de otros elementos
+    if(carrusel){
+      divBotones.style.top = `${carrusel.offsetHeight / 1.4}px`;
+    }
+
   }
 
   function ajustarPaginacion() {
@@ -45,11 +47,11 @@ export function carrusel(contenedor, secciones) {
       const divCarrusel = document.querySelector('.div-carrusel');
 
       // Calculate the relative position from the top of the carousel container
-      const topPosition = containerRect.height + 80; // 40px for spacing
+      const topPosition = containerRect.height; // 40px for spacing
 
       // Update pagination styles
-      paginacion.style.position = 'absolute';
-      paginacion.style.top = `${topPosition}px`;
+      paginacion.style.position = 'relative';
+      paginacion.style.top = `-50px`;
       paginacion.style.left = '50%';
       paginacion.style.transform = 'translateX(-50%)';
       paginacion.style.width = 'fit-content';
@@ -172,36 +174,41 @@ export function carrusel(contenedor, secciones) {
             mediaElement.onload = function () {
               console.log('Medio cargado exitosamente:', elemento.imagen);
             };
+            if (elemento.tipo === 'texto_imagen' && elemento.texto) {
+              const textDiv = document.createElement('div');
+              textDiv.className = 'text-content';
+              if (elemento.texto && Array.isArray(elemento.texto)) {
+                elemento.texto.forEach(subElemento => {
+                  if (subElemento.tipo === 'parrafo') {
+                    const p = document.createElement('p');
+                    p.innerHTML = subElemento.contenido;
+                    textDiv.appendChild(p);
+                  }
+                  else if (subElemento.tipo === 'lista') {
+                    const lista = document.createElement(subElemento.estilo);
+                    subElemento.items.forEach((item) => {
+                      const li = document.createElement('li');
+                      li.innerHTML = item;
 
-            const textDiv = document.createElement('div');
-            textDiv.className = 'text-content';
+                      if (elemento.clase) li.classList.add(elemento.clase);
 
-            if (elemento.texto && Array.isArray(elemento.texto)) {
-              elemento.texto.forEach(subElemento => {
-                if (subElemento.tipo === 'parrafo') {
-                  const p = document.createElement('p');
-                  p.innerHTML = subElemento.contenido;
-                  textDiv.appendChild(p);
-                }
-                else if (subElemento.tipo === 'lista') {
-                  const lista = document.createElement(subElemento.estilo);
-                  subElemento.items.forEach((item) => {
-                    const li = document.createElement('li');
-                    li.innerHTML = item;
-
-                    if (elemento.clase) li.classList.add(elemento.clase);
-
-                    lista.appendChild(li);
-                  });
-                  textDiv.appendChild(lista);
-                }
-              });
+                      lista.appendChild(li);
+                    });
+                    textDiv.appendChild(lista);
+                  }
+                });
+              }
+              imageDiv.appendChild(mediaElement);
+              container.appendChild(imageDiv);
+              container.appendChild(textDiv);
+              pagina.appendChild(container);
+            } else {
+              imageDiv.appendChild(mediaElement);
+              imageDiv.style.minWidth = '100%';
+              container.appendChild(imageDiv);
+              pagina.appendChild(container);
             }
 
-            imageDiv.appendChild(mediaElement);
-            container.appendChild(imageDiv);
-            container.appendChild(textDiv);
-            pagina.appendChild(container);
           }
           else if (elemento.tipo === 'youtube') {
             const youtubeContainer = document.createElement('div');
@@ -245,7 +252,7 @@ export function carrusel(contenedor, secciones) {
               });
             }
 
-           
+
             youtubeContainer.appendChild(textDiv);/*
             pagina.appendChild(container); */
           }
@@ -257,7 +264,7 @@ export function carrusel(contenedor, secciones) {
       carrusel.appendChild(div);
     });
   }
-  
+
   generarCarrusel();
   const carrusel = document.getElementById('carrusel');
   const paginas = carrusel.children;
@@ -268,32 +275,37 @@ export function carrusel(contenedor, secciones) {
   function actualizarCarrusel() {
     // Mover el carrusel a la diapositiva activa
     carrusel.style.transform = `translateX(-${currentIndex * 100}%)`;
-  
+
     // Actualizar la clase activa en los puntos de paginación
-    document.querySelectorAll('.paginacion span').forEach((dot, index) => {
+    document.querySelectorAll('#paginacion span').forEach((dot, index) => {
       dot.classList.toggle('active', index === currentIndex);
     });
-  
+
     // Ajustar otros elementos relacionados
-    ajustarCarrusel();
     ajustarPaginacion();
     ajustarPosicionBotones();
+    ajustarCarrusel();
     quitarBotones();
   }
-  
-  function ajustarCarrusel() {
-        // Obtener la altura de la diapositiva activa
-        const diapositivaActiva = document.querySelector(`#diapositiva${currentIndex+1} .pagina`);
-        if (diapositivaActiva) {
-          let alturaDiapositiva = 0;
-          alturaDiapositiva = diapositivaActiva.offsetHeight; 
 
-          // Ajustar la altura del contenedor
-          const contenedorCarrusel = document.querySelector('.div-diapositivas');
-          if (contenedorCarrusel) {
-             contenedorCarrusel.style.height = `${alturaDiapositiva+90}px`; 
-          }
-        }
+  function ajustarCarrusel() {
+    // Obtener la altura de la diapositiva activa
+    const diapositivaActiva = document.querySelector(`#diapositiva${currentIndex + 1} .pagina`);
+    const activa = document.querySelector('.activa');
+    if (activa) {
+      activa.classList.remove('activa');
+    }
+    diapositivaActiva.classList.add('activa');
+    if (diapositivaActiva) {
+      let alturaDiapositiva = 0;
+      alturaDiapositiva = diapositivaActiva.offsetHeight;
+
+      // Ajustar la altura del contenedor
+      const contenedorCarrusel = document.querySelector('#carrusel');
+      if (contenedorCarrusel) {
+        contenedorCarrusel.style.height = `${alturaDiapositiva + 90}px`;
+      }
+    }
   }
 
   function quitarBotones() {
