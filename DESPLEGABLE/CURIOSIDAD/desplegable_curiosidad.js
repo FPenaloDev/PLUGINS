@@ -2,7 +2,11 @@ export function desplegableCuriosidad(container, datos) {
 
     //CSS
     const css = document.createElement('link');
+    if (document.getElementById('css')) {
+        document.getElementById('css').remove();
+      }
     css.rel = 'stylesheet';
+    css.id = 'css';
     css.type = 'text/css';
     css.href = 'PLUGINS/DESPLEGABLE/CURIOSIDAD/desplegable_curiosidad.css';
     document.head.appendChild(css);

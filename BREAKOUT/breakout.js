@@ -1,10 +1,14 @@
-// Estilos
-const estilo = document.createElement('link');
-estilo.rel = 'stylesheet';
-estilo.type = 'text/css';
-estilo.href = 'PLUGINS/BREAKOUT/breakout.css'
-document.head.appendChild(estilo);
 export function breakout(contenedor, preguntas) {
+    if (document.getElementById('css')) {
+        document.getElementById('css').remove();
+    }
+    // Estilos
+    const estilo = document.createElement('link');
+    estilo.rel = 'stylesheet';
+    estilo.id = 'css';
+    estilo.type = 'text/css';
+    estilo.href = 'PLUGINS/BREAKOUT/breakout.css'
+    document.head.appendChild(estilo);
 
     // Variables del juego
     let vidas = 3;

@@ -1,14 +1,16 @@
-import {playAudio} from '../AUDIOS/audio.js';
-import {cargarConfeti, mostrarConfetiFinal} from '../ANIMACIONES/CONFETTI/confetti.js';
-
-const css = document.createElement('link');
-css.rel = 'stylesheet';
-css.type = 'text/css';
-css.href = 'PLUGINS/ARRASTRARSOLTAR_TEXTO/arrastrarSoltarTexto.css';
-
-document.head.appendChild(css);
+import { playAudio } from '../AUDIOS/audio.js';
+import { cargarConfeti, mostrarConfetiFinal } from '../ANIMACIONES/CONFETTI/confetti.js';
 
 export function crearActividad(idContenedor, datos) {
+    if (document.getElementById('css')) {
+        document.getElementById('css').remove();
+    }
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.id = 'css';
+    css.type = 'text/css';
+    css.href = './PLUGINS/ARRASTRARSOLTAR_TEXTO/arrastrarSoltarTexto.css';
+    document.head.appendChild(css);
     // Mezclar las palabras en un orden aleatorio
     const palabrasAleatorias = [...datos.palabras].sort(() => Math.random() - 0.5);
 
@@ -72,7 +74,7 @@ export function crearActividad(idContenedor, datos) {
                 }
                 aciertos++;
                 playAudio('./PLUGINS/AUDIOS/acierto.mp3');
-                if(aciertos === palabras.length){
+                if (aciertos === palabras.length) {
                     mostrarConfetiFinal();
                     playAudio('./PLUGINS/AUDIOS/win.mp3');
                 }

@@ -1,9 +1,13 @@
 import {cargarConfeti, mostrarConfetiFinal} from '../ANIMACIONES/CONFETTI/confetti.js';
 
 export function rellenarHuecos(contenedor, secciones) {
+    if (document.getElementById('css')) {
+        document.getElementById('css').remove();
+      }
     // Cargar CSS
     const css = document.createElement('link');
     css.rel = 'stylesheet';
+    css.id = 'css';
     css.type = 'text/css';
     css.href = 'PLUGINS/RELLENARHUECOS_DESPLEGABLE/rellenarHuecos.css';
     document.head.appendChild(css);

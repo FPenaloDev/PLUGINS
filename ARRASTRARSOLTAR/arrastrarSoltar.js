@@ -2,11 +2,15 @@ import { cargarConfeti, mostrarConfetiFinal } from "../ANIMACIONES/CONFETTI/conf
 import { playAudio } from "../AUDIOS/audio.js";
 export function arrastrarYSoltar(contenedor, elementos, categorias) {
 
-    const estilo = document.createElement('link');
-    estilo.rel = 'stylesheet';
-    estilo.type = 'text/css';
-    estilo.href = 'PLUGINS/ARRASTRARSOLTAR/arrastrarSoltar.css';
-    document.head.appendChild(estilo);
+    if (document.getElementById('css')) {
+        document.getElementById('css').remove();
+    }
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.id = 'css';
+    css.type = 'text/css';
+    css.href = './PLUGINS/ARRASTRARSOLTAR/arrastrarSoltar.css';
+    document.head.appendChild(css);
 
     // Establece el contenido HTML inicial del contenedor principal
     contenedor.innerHTML = `

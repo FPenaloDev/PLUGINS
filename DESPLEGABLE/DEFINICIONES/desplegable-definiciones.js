@@ -1,10 +1,14 @@
-const css = document.createElement('link');
-css.rel = 'stylesheet';
-css.type = 'text/css';
-css.href = 'PLUGINS---/DESPLEGABLE/DEFINICIONES/desplegable-definiciones.css';
-document.head.appendChild(css);
 
 export function desplegableDefiniciones(contenedor, secciones) {
+    if (document.getElementById('css')) {
+        document.getElementById('css').remove();
+      }
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.id = 'css';
+    css.type = 'text/css';
+    css.href = 'PLUGINS---/DESPLEGABLE/DEFINICIONES/desplegable-definiciones.css';
+    document.head.appendChild(css);
     // Determinar el número total de páginas basado en la propiedad "pagina" de las secciones
     const totalPages = Math.max(...secciones.map(seccion => seccion.pagina));
     let currentPage = 1;

@@ -1,12 +1,14 @@
-const css = document.createElement('link');
-
-css.rel = 'stylesheet';
-css.type = 'text/css';
-css.href = '../PLUGINS/CARRUSEL_V2/carrusel_v2.css';
-
-document.head.appendChild(css);
 
 export function carrusel_v2(contenedor, secciones) {
+  if (document.getElementById('css')) {
+    document.getElementById('css').remove();
+  }
+  const css = document.createElement('link');
+  css.rel = 'stylesheet';
+  css.id = 'css';
+  css.type = 'text/css';
+  css.href = '../PLUGINS/CARRUSEL_V2/carrusel_v2.css';
+  document.head.appendChild(css);
   contenedor.innerHTML = '';
 
   // Crear el contenedor del carrusel
@@ -61,7 +63,7 @@ export function carrusel_v2(contenedor, secciones) {
 
     if (secciones[seccionActual].imagen) {
       if (!imagenElement) {
-        
+
         // Si el contenedor de imagen existe, agregamos la nueva imagen
         if (contenedorImagen) {
           contenedorImagen.appendChild(nuevaImagen);

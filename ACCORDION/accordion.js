@@ -1,8 +1,12 @@
 export function acordeon(contenedor, secciones) {
+    if (document.getElementById('css')) {
+        document.getElementById('css').remove();
+    }
     const css = document.createElement('link');
     css.rel = 'stylesheet';
+    css.id = 'css';
     css.type = 'text/css';
-    css.href = 'PLUGINS/ACCORDION/accordion.css';
+    css.href = './PLUGINS/ACCORDION/accordion.css';
     document.head.appendChild(css);
 
     // Establecer el contenido HTML inicial del contenedor principal
@@ -50,7 +54,7 @@ export function acordeon(contenedor, secciones) {
                 const p = document.createElement('p');
                 p.innerHTML = `<span class="resaltado">${parrafo.titulo}</span> ${parrafo.descripcion}`;
                 contenedorTexto.appendChild(p);
-                
+
                 // Acceder al 'span' dentro del párrafo y aplicar el estilo si el título es "Sabías que..."
                 if (parrafo.titulo === 'Sabias que...') {
                     p.style.display = 'block';
@@ -62,8 +66,8 @@ export function acordeon(contenedor, secciones) {
                 }
             }
         });
-        
-        
+
+
 
         // Agregar el contenedor de texto al contenido del acordeón
         contenido.appendChild(contenedorTexto);

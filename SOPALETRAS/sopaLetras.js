@@ -1,4 +1,4 @@
-import { cargarConfeti,mostrarConfetiFinal } from '../ANIMACIONES/CONFETTI/confetti.js';
+import { cargarConfeti, mostrarConfetiFinal } from '../ANIMACIONES/CONFETTI/confetti.js';
 
 export function sopaLetras(contenedor, secciones) {
     // Verificar si el contenedor existe
@@ -7,14 +7,15 @@ export function sopaLetras(contenedor, secciones) {
 
     // Limpiar el contenedor y su estado previo
     contenedor.innerHTML = '';
-    // Asegurar que el CSS se carga solo una vez
-    if (!document.querySelector('link[href="PLUGINS/SOPALETRAS/sopa_de_letras.css"]')) {
-        const css = document.createElement('link');
-        css.rel = 'stylesheet';
-        css.type = 'text/css';
-        css.href = 'PLUGINS/SOPALETRAS/sopa_de_letras.css';
-        document.head.appendChild(css);
+    if (document.getElementById('css')) {
+        document.getElementById('css').remove();
     }
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.id = 'css';
+    css.type = 'text/css';
+    css.href = 'PLUGINS/SOPALETRAS/sopa_de_letras.css';
+    document.head.appendChild(css);
     // Reinicializar todas las variables globales
     let cuadricula = Array.from({ length: 15 }, () => Array(15).fill(''));
     let ubicacionPalabras = {};
@@ -92,7 +93,7 @@ export function sopaLetras(contenedor, secciones) {
 
         overlay.style.display = 'flex';
 
-        document.getElementById('btnCerrarPopup','overlayPopup').addEventListener('click', () => {
+        document.getElementById('btnCerrarPopup', 'overlayPopup').addEventListener('click', () => {
             cerrarPopup();
         });
         document.getElementById('overlayPopup').addEventListener('click', () => {

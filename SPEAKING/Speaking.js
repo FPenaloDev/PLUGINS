@@ -1,7 +1,10 @@
 export function speaking(contenedor, frases, audios) {
-  //CSS
+  if (document.getElementById('css')) {
+    document.getElementById('css').remove();
+  }
   const speakingCss = document.createElement('link');
   speakingCss.rel = 'stylesheet';
+  speakingCss.id = 'css';
   speakingCss.type = 'text/css';
   speakingCss.href = 'PLUGINS/SPEAKING/Speaking.css';
   document.head.appendChild(speakingCss);
