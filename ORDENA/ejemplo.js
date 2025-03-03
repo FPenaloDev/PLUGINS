@@ -37,8 +37,3 @@ const secciones = [
 
 
 ordena(contenedor, secciones);
-// Descomentar estas lineas para Añadir un titulo
-const titulo = document.createElement('span');
-titulo.className = 'tituloActividad';
-titulo.textContent = `PRUEBA`;
-contenedor.prepend(titulo);

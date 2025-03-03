@@ -1,152 +1,244 @@
-@import url('./color_curso.css');
+@import url('./color_curso_inf.css');
 
-.actividad-ordena {
+#actividad-ordena {
     max-width: 80%;
     margin: 20px auto;
     font-family: 'Poppins' !important;
     transition: all 0.3s ease;
-}
 
-.tituloActividad {
-    font-family: 'Poppins' !important;
-    display:flex;
-    max-width:80%;
-    width:max-content;
-    margin:auto;
-    font-size:2em;
-    font-weight:800;
-}
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: var(--primario);
+    }
 
-.contenedor-ordenar {
-    display: flex;
-    gap: 20px;
-    background: var(--blanco);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+    .tituloActividad {
+        font-family: 'Poppins' !important;
+        display: flex;
+        max-width: 80%;
+        width: max-content;
+        margin: auto;
+        font-size: 2em;
+        font-weight: 800;
+    }
 
-.lista-conceptos {
-    flex: 1;
-}
+    .contenedor-ordenar {
+        display: flex;
+        gap: 20px;
+        background: var(--blanco);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-.concepto {
-    padding: 15px;
-    margin: 8px 0;
-    background-color: var(--terciario);
-    color:var(--blanco);
-    border: 2px solid var(--terciario);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
+    .lista-conceptos {
+        flex: 1;
+    }
 
-.concepto:hover {
-    transform: translateX(5px);
-}
+    .concepto {
+        padding: 15px;
+        margin: 8px 0;
+        background-color: var(--terciario);
+        color: var(--blanco);
+        border: 2px solid var(--terciario);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        cursor: grab;
+        user-select: none;
+    }
 
-.concepto.seleccionado {
-    border-color: var(--secundario);
-    color: var(--secundario);
-    font-weight:750;
-    transform: scale(1.02);
-}
+    .concepto:before {
+        content: "☰";
+        margin-right: 10px;
+        opacity: 0.7;
+    }
 
-.concepto.correcto {
-    border-color: #28a745;
-    background-color: #d4edda;
-}
+    .concepto:hover {
+        transform: translateX(5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-.concepto.incorrecto {
-    border-color: #dc3545;
-    background-color: #f8d7da;
-}
+    .concepto.arrastrando {
+        opacity: 0.5;
+        cursor: grabbing;
+        z-index: 100;
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
 
-.concepto.moviendo {
-    animation: pulse 0.3s ease-in-out;
-}
+    .concepto.sobre-zona {
+        border: 2px dashed var(--primario);
+        background-color: rgba(var(--terciario-rgb), 0.7);
+        transform: translateX(10px);
+        transition: all 0.2s ease;
+    }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.02); }
-    100% { transform: scale(1); }
-}
+    .concepto.seleccionado {
+        border-color: var(--secundario);
+        color: var(--secundario);
+        font-weight: 750;
+        transform: scale(1.02);
+    }
 
-.controles {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 15px;
-}
+    .concepto.correcto {
+        border-color: #28a745;
+        background-color: #d4edda;
+        color: #155724;
+        animation: correctAnimation 0.5s ease;
+    }
 
-.boton {
-    padding: 12px;
-    border: none;
-    border-radius: 80px;
-    cursor: pointer;
-    background: var(--secundario);
-    color: white;
-    transition: all 0.2s ease;
-    font-size: 1.2em;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    transition:all 0.35s ease-in;
-    justify-content: center;
-}
+    .concepto.incorrecto {
+        border-color: #dc3545;
+        background-color: #f8d7da;
+        color: #721c24;
+        animation: incorrectAnimation 0.5s ease;
+    }
 
-.boton:hover {
-    transform:translateY(-10px) scale(1.2) !important;
-}
+    @keyframes correctAnimation {
+        0% {
+            transform: scale(1);
+        }
 
-.boton:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-    opacity: 0.7;
-}
+        50% {
+            transform: scale(1.05);
+            background-color: #28a745;
+        }
 
-.boton:not(:disabled):hover {
-    transform: translateY(-2px);
-    box-shadow: 10px 4px 8px var(--primario);
-    border: 3px solid var(--blanco);
-}
+        100% {
+            transform: scale(1);
+        }
+    }
 
-.boton-verificar {
-    width: auto;
-    padding: 15px 30px;
-    background: var(--primario);
-    color:var(--secundario);
-    margin-top: 20px;
-    font-size: 1.3em;
-}
+    @keyframes incorrectAnimation {
+        0% {
+            transform: scale(1);
+        }
 
-.controles-juego {
-    max-width:max-content;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: auto;
-    margin-top: 20px;
-}
+        25% {
+            transform: translateX(-5px);
+        }
 
-.mensaje-nivel {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.9);
-    color: white;
-    padding: 20px 40px;
-    border-radius: 10px;
-    font-size: 1.5em;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-}
+        50% {
+            transform: translateX(5px);
+        }
 
-.mensaje-nivel.visible {
-    opacity: 1;
+        75% {
+            transform: translateX(-5px);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .concepto.moviendo {
+        animation: pulse 0.3s ease-in-out;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.02);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .controles {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .boton {
+        padding: 12px;
+        border: none;
+        border-radius: 80px;
+        cursor: pointer;
+        background: var(--secundario);
+        color: white;
+        transition: all 0.2s ease;
+        font-size: 1.2em;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        transition: all 0.35s ease-in;
+        justify-content: center;
+    }
+
+    .boton:hover {
+        transform: translateY(-10px) scale(1.2) !important;
+    }
+
+    .boton:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+    .boton:not(:disabled):hover {
+        transform: translateY(-2px);
+        box-shadow: 10px 4px 8px var(--primario);
+        border: 3px solid var(--blanco);
+    }
+
+    .boton-verificar {
+        width: auto;
+        padding: 15px 30px;
+        background: var(--primario);
+        color: var(--secundario);
+        margin-top: 20px;
+        font-size: 1.3em;
+    }
+
+    .controles-juego {
+        max-width: max-content;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    .mensaje-nivel {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 20px 40px;
+        border-radius: 10px;
+        font-size: 1.5em;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 1000;
+        text-align: center;
+        max-width: 80%;
+    }
+
+    .mensaje-nivel.visible {
+        opacity: 1;
+    }
+
+    .indicador-posicion {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        font-size: 0.8em;
+        color: #dc3545;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 2px 5px;
+        border-radius: 3px;
+    }
 }
