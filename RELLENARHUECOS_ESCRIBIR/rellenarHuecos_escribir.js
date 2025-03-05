@@ -157,6 +157,7 @@ export function rellenarHuecos(contenedor, secciones) {
         divResultado.textContent = `¡Has acertado ${totalRespuestas} de ${totalPreguntas}! (${porcentaje.toFixed(2)}%)`;
         // Actualizar la barra de progreso después de enviar respuestas
         actualizarProgreso(totalRespuestas, totalPreguntas);
+        
     }
     // Crear actividad
     function crearActividad() {
@@ -177,9 +178,22 @@ export function rellenarHuecos(contenedor, secciones) {
         });
     }
     // Evento para el botón "Enviar Respuestas"
-    botonEnviar.addEventListener('click', mostrarResultados);
+    botonEnviar.addEventListener('click', () => {
+        mostrarResultados();
+        document.querySelectorAll('input').forEach(input => {
+            ajustarTamañoInput(input);
+            input.style.textAlign = 'center';
+        });
+
+
+    });
     // Agregar evento al botón "Mostrar Soluciones"
-    botonMostrarSoluciones.addEventListener('click', mostrarSoluciones);
+    botonMostrarSoluciones.addEventListener('click', () => {
+        mostrarSoluciones();
+        botonMostrarSoluciones.disabled = true;
+        document.querySelectorAll('input').forEach(input => input.style.textAlign = 'center');
+
+    });
 
     function iniciar() {
         crearActividad();
