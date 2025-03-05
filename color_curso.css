@@ -1,0 +1,11 @@
+:root {
+    --primario: #00a988;
+    --primario-opacidad: #00a988b0;
+    --secundario: #488080;
+    --secundario-opacidad: #488080b0;
+    --terciario: #6b6866;
+    --terciario-opacidad: #6b6866b0;
+    --gris: #f4f4f4;
+    --blanco: #fff;
+    --negro: #333;
+}
