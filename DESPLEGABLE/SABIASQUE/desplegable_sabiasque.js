@@ -13,7 +13,7 @@ export function desplegableSabiasQue(container, datos) {
     // Generar el contenido dinámicamente a partir de los datos
     const contenidoHTML = `
     <div class="main">
-        <h2 id="Titulo"><span>Sabías que...</span></h2>
+        <h2 id="Titulo"><span>${datos[0].titulo}</span></h2>
         <div id="desplegable1">
             ${datos.map(dato => {
         switch (dato.tipo) {

@@ -26,10 +26,14 @@ div.main {
 }
 
 #Titulo span {
+  display: block;
+  width:max-content;
+  max-width:100%;
+  margin: auto;
+  text-align: center;
   font-size: 22pt;
   color: var(--color-titulo);
   font-weight: 800;
-  margin: 0;
 }
 
 #desplegable1 {
