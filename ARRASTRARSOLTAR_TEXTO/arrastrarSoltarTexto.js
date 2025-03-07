@@ -2,12 +2,12 @@ import { playAudio } from '../AUDIOS/audio.js';
 import { cargarConfeti, mostrarConfetiFinal } from '../ANIMACIONES/CONFETTI/confetti.js';
 
 export function crearActividad(idContenedor, datos) {
-    if (document.getElementById('css')) {
-        document.getElementById('css').remove();
+    if (document.querySelector('.css')) {
+        document.querySelector('.css').remove();
     }
     const css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.id = 'css';
+    css.className = 'css';
     css.type = 'text/css';
     css.href = './PLUGINS/ARRASTRARSOLTAR_TEXTO/arrastrarSoltarTexto.css';
     document.head.appendChild(css);

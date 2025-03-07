@@ -1,11 +1,10 @@
 export function listening(contenedor, audio_ruta) {
-    if (document.getElementById('css')) {
-        document.getElementById('css').remove();
-      }
-    // CSS
+    if (document.querySelector('.css')) {
+        document.querySelector('.css').remove();
+    }
     const css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.id = 'css';
+    css.className = 'css';
     css.type = 'text/css';
     css.href = 'PLUGINS/LISTENING/listening.css';
     document.head.appendChild(css);

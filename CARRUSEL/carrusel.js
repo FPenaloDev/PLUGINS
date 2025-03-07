@@ -1,10 +1,10 @@
 export function carrusel(contenedor, secciones) {
-  if(document.getElementById('css')){
-    document.getElementById('css').remove();
+  if (document.querySelector('.css')) {
+    document.querySelector('.css').remove();
   }
   const css = document.createElement('link');
   css.rel = 'stylesheet';
-  css.id = 'css';
+  css.className = 'css';
   css.type = 'text/css';
   css.href = './PLUGINS/CARRUSEL/carrusel.css';
 
@@ -29,7 +29,7 @@ export function carrusel(contenedor, secciones) {
     divBotones.style.left = '50%';
     divBotones.style.transform = 'translateX(-50%)';
     divBotones.style.zIndex = '1000'; // Asegurarse de que esté por encima de otros elementos
-    if(carrusel){
+    if (carrusel) {
       divBotones.style.top = `${carrusel.offsetHeight / 1.4}px`;
     }
 

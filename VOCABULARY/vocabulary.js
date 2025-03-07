@@ -1,9 +1,13 @@
 import { cargarConfeti, mostrarConfeti, mostrarConfetiFinal } from '../ANIMACIONES/CONFETTI/confetti.js';
 import { playAudio } from '../AUDIOS/audio.js';
 export function iniciarActividadPronunciacion(contenedor, palabras) {
+  if (document.querySelector('.css')) {
+    document.querySelector('.css').remove();
+  }
   const css = document.createElement('link');
-  css.rel = `stylesheet`;
-  css.type = `text/css`;
+  css.rel = 'stylesheet';
+  css.className = 'css';
+  css.type = 'text/css';
   css.href = `PLUGINS/VOCABULARY/vocabulary.css`;
   document.head.appendChild(css);
   cargarConfeti();

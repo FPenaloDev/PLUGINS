@@ -1,13 +1,13 @@
 export function speaking(contenedor, frases, audios) {
-  if (document.getElementById('css')) {
-    document.getElementById('css').remove();
+  if (document.querySelector('.css')) {
+    document.querySelector('.css').remove();
   }
-  const speakingCss = document.createElement('link');
-  speakingCss.rel = 'stylesheet';
-  speakingCss.id = 'css';
-  speakingCss.type = 'text/css';
-  speakingCss.href = 'PLUGINS/SPEAKING/Speaking.css';
-  document.head.appendChild(speakingCss);
+  const css = document.createElement('link');
+  css.rel = 'stylesheet';
+  css.className = 'css';
+  css.type = 'text/css';
+  css.href = 'PLUGINS/SPEAKING/Speaking.css';
+  document.head.appendChild(css);
 
   // Estructura HTML
   contenedor.innerHTML = `
@@ -248,18 +248,18 @@ export function speaking(contenedor, frases, audios) {
   recognition.onresult = function (event) {
     const palabras_dichas = event.results[0][0].transcript;
     const frase_objetivo = frases[indexActual];
-  
+
     // Normalizar ambos textos usando la función mejorada
     const palabras_dichasNormalized = normalizeText(palabras_dichas);
     const fraseObjetivoNormalized = normalizeText(frase_objetivo);
-  
+
     // Dividir en palabras, ignorando los puntos
     const palabras_dichasArray = palabras_dichasNormalized.split(' ').filter(word => word !== '.');
     const targetWords = fraseObjetivoNormalized.split(' ').filter(word => word !== '.');
-  
+
     const palabra = contenedor.querySelector('#palabra');
     let correcto = true;
-  
+
     // Resaltar todas las palabras que coincidan, independientemente de su posición
     targetWords.forEach((palabraEncontrada, index) => {
       const spanPalabra = palabra.childNodes[index];
@@ -272,11 +272,11 @@ export function speaking(contenedor, frases, audios) {
         correcto = false;
       }
     });
-  
+
     // Mostrar el texto original hablado
     contenedor.querySelector('#palabras_dichas').textContent = `You said: ${palabras_dichas}`;
     contenedor.querySelector('#palabras_dichas').style.display = 'block';
-  
+
     if (correcto) {
       contenedor.querySelector('#resultados').textContent = 'You said it correctly!';
       contenedor.querySelector('#resultados').style.display = 'block';

@@ -1,12 +1,12 @@
 
 
 export function adivina(contenedor, secciones) {
-    if(document.getElementById('css')){
-        document.getElementById('css').remove();
+    if (document.querySelector('.css')) {
+        document.querySelector('.css').remove();
     }
     const css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.id = 'css';
+    css.className = 'css';
     css.type = 'text/css';
     css.href = './PLUGINS/ADIVINA/adivina.css';
     document.head.appendChild(css);

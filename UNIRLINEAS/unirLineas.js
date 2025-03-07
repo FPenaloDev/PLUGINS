@@ -1,16 +1,15 @@
 import { cargarConfeti, mostrarConfetiFinal } from "../ANIMACIONES/CONFETTI/confetti.js";
 
 export function unir(contenedor, secciones) {
-    if(document.getElementById('css')){
-        document.getElementById('css').remove();
-    } else {
+    if (document.querySelector('.css')) {
+        document.querySelector('.css').remove();
+    }
     const css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.id = 'css';
+    css.className = 'css';
     css.type = 'text/css';
     css.href = 'PLUGINS/UNIRLINEAS/unirLineas.css'; // Cambié el nombre del archivo CSS
     document.head.appendChild(css);
-    }
 
     contenedor.innerHTML = `
         <div id="actividad_unir">
@@ -172,37 +171,37 @@ export function unir(contenedor, secciones) {
             // Buscar los elementos emparejados en sus respectivas columnas
             const elementosIzquierda = Array.from(columnaIzquierda.children);
             const elementosDerecha = Array.from(columnaDerecha.children);
-            
+
             // Encontrar los elementos que coinciden con el índice de la línea
             izquierda = elementosIzquierda.find(el => el.dataset.index === index.toString());
             derecha = elementosDerecha.find(el => el.dataset.index === index.toString());
-    
+
             // Verificar si los elementos existen y están emparejados
             if (!izquierda || !derecha || !izquierda.classList.contains('emparejado')) {
                 return;
             }
         }
-    
+
         const inicioX = izquierda.offsetLeft + izquierda.offsetWidth;
         const inicioY = izquierda.offsetTop + izquierda.offsetHeight / 2;
         const finX = derecha.offsetLeft;
         const finY = derecha.offsetTop + derecha.offsetHeight / 2;
-    
+
         const dx = finX - inicioX, dy = finY - inicioY;
         const longitud = Math.sqrt(dx * dx + dy * dy);
         const angulo = Math.atan2(dy, dx);
-    
+
         linea.style.width = `${longitud}px`;
         linea.style.transform = `rotate(${angulo}rad)`;
         linea.style.left = `${inicioX}px`;
         linea.style.top = `${inicioY}px`;
     }
-    
+
     function inicializarJuego() {
         cargarConfeti();
         cargarConceptos(conceptosActuales);
         document.addEventListener('mousemove', actualizarLineaActiva);
-    
+
         // Agregar un pequeño retraso al resize para mejor rendimiento
         let resizeTimeout;
         window.addEventListener('resize', () => {

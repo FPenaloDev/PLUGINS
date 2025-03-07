@@ -1,11 +1,11 @@
 export function carruselTarjetas(contenedor, secciones) {
-  if (document.getElementById('css')) {
-    document.getElementById('css').remove();
-  }
-  const css = document.createElement('link');
-  css.rel = 'stylesheet';
-  css.id = 'css';
-  css.type = 'text/css';
+  if (document.querySelector('.css')) {
+    document.querySelector('.css').remove();
+}
+const css = document.createElement('link');
+css.rel = 'stylesheet';
+css.className = 'css';
+css.type = 'text/css';
   css.href = 'PLUGINS/CARRUSELTARJETAS/carruselTarjetas.css';
 
   document.head.appendChild(css);

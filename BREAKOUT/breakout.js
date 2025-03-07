@@ -1,12 +1,11 @@
 export function breakout(contenedor, preguntas) {
-    if (document.getElementById('css')) {
-        document.getElementById('css').remove();
+    if (document.querySelector('.css')) {
+        document.querySelector('.css').remove();
     }
-    // Estilos
-    const estilo = document.createElement('link');
-    estilo.rel = 'stylesheet';
-    estilo.id = 'css';
-    estilo.type = 'text/css';
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.className = 'css';
+    css.type = 'text/css';
     estilo.href = 'PLUGINS/BREAKOUT/breakout.css'
     document.head.appendChild(estilo);
 

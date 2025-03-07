@@ -1,11 +1,11 @@
 import { evaluarPuntuacion } from './puntuacionPanArte.js';
-if (document.getElementById('css')) {
-    document.getElementById('css').remove();
-  }
-const panArteCss = document.createElement('link');
-panArteCss.rel = 'stylesheet';
-panArteCss.id = 'css';
-panArteCss.type = 'text/css';
+if (document.querySelector('.css')) {
+    document.querySelector('.css').remove();
+}
+const css = document.createElement('link');
+css.rel = 'stylesheet';
+css.className = 'css';
+css.type = 'text/css';
 panArteCss.href = 'PLUGINS/SIMULADOR/PANARTE/panArte.css';
 document.head.appendChild(panArteCss);
 
