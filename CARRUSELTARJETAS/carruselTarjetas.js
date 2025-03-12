@@ -145,14 +145,14 @@ css.type = 'text/css';
     });
   });
 
-  // Posicionar controles
+/*   // Posicionar controles
   const carrusel = contenedor.querySelector('.carrusel');
   const controles = contenedor.querySelector('.controles-carrusel');
 
   if (carrusel && controles) {
     controles.style.position = 'fixed';
-    controles.style.top = `40%`;
-  }
+    controles.style.top = `50%`;
+  } */
 
   // Retornar métodos públicos
   return {

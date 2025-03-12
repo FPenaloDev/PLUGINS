@@ -25,7 +25,7 @@
     display: flex;
     overflow: hidden;
     margin: auto;
-    max-width: 75%;
+    max-width: 70%;
     width: 100%;
     height: max-content;
     position: relative;
@@ -236,10 +236,10 @@
 
   /* Controles del carrusel */
   .controles-carrusel {
-    position: absolute;
-    top: 55%;
-    left: 3%;
-    width: 94%;
+    position: relative;
+    top: 35vh;
+    left:5%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     transform: translateY(-50%);
@@ -429,7 +429,8 @@
 
 
     .controles-carrusel {
-      top: 50%;
+      position:fixed;
+      top:50vh;
       left: 5%;
       width: 90%;
     }
