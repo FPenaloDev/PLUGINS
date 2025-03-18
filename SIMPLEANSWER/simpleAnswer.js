@@ -183,9 +183,8 @@ export function SimpleAnswer(contenedor, secciones) {
             ajustarTamañoInput(input);
             input.style.textAlign = 'center';
         });
-
-
     });
+    
     // Agregar evento al botón "Mostrar Soluciones"
     botonMostrarSoluciones.addEventListener('click', () => {
         mostrarSoluciones();
