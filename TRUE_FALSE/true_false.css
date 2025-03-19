@@ -1,0 +1,287 @@
+@import url('color_curso.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.contenedor-cuestionario {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.contenedor-cuestionario .barra-lateral {
+  width: 90%;
+  background-color: var(--fondo-div-barra);
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  margin: 0 auto 20px auto;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.contenedor-cuestionario .contenido-principal {
+  width: 70%;
+  height: max-content;
+  overflow-y: auto;
+  scrollbar-width: none;
+  margin: 0 auto;
+}
+
+.contenedor-cuestionario .contenedor-progreso {
+  margin: auto;
+  width: 100%;
+}
+
+.contenedor-cuestionario .barra-progreso {
+  width: 80%;
+  height: 2.4em;
+  margin: auto;
+  border: 3px solid var(--borde-barra-progreso);
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.contenedor-cuestionario .progreso {
+  height: 100%;
+  background-color: var(--relleno-barra-progreso);
+  width: 0;
+  transition: width 0.5s ease;
+}
+
+.contenedor-cuestionario .contenedor-pregunta {
+  width: 100%; /* Cambié el max-width a width: 100% */
+  background-color: var(--background-pregunta);
+  border-radius: 25px;
+  border-top: 5px solid var(--borde-superior-pregunta);
+  padding: 20px;
+  font-size: 150%;
+  color: #000000;
+  margin: 0 auto 20px auto;
+  box-shadow: var(--sombra-pregunta);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contenedor-cuestionario .contenedor-pregunta:hover {
+  transform: translateY(-5px);
+}
+
+.contenedor-cuestionario .contenedor-pregunta p {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.contenedor-cuestionario .contenedor-botones {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.contenedor-cuestionario .btn-respuesta {
+  background-color: var(--background-boton);
+  color: var(--color-boton);
+  border: 2px solid transparent;
+  padding: 10px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 5px 10px;
+  min-width: 120px;
+  position: relative;
+}
+
+.contenedor-cuestionario .btn-respuesta:hover {
+  background-color: var(--background-boton-hover);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-boton-hover);
+}
+
+/* Estilo mejorado para botones seleccionados */
+.contenedor-cuestionario .btn-respuesta.seleccionado {
+  background-color: var(--primario, #4285f4);
+  color: white;
+  border: 2px solid var(--secundario);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+  font-weight: bold;
+}
+
+/* Añadir animación al seleccionar */
+.contenedor-cuestionario .btn-respuesta.seleccionado::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  animation: pulse 1.5s infinite;
+  z-index: -1;
+  
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(66, 133, 244, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(66, 133, 244, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(66, 133, 244, 0);
+  }
+}
+
+.contenedor-cuestionario .contenedor-boton {
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.contenedor-cuestionario .contenedor-boton button {
+  background-color: var(--background-boton);
+  color: var(--color-boton);
+  border: none;
+  max-width: 12em;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin: auto;
+}
+
+.contenedor-cuestionario .contenedor-boton button:hover {
+  background-color: var(--background-boton-hover);
+  color: #fff;
+  border-bottom: 2px solid #000;
+  transform: translateY(2px);
+  box-shadow: var(--sombra-boton-hover);
+}
+
+.contenedor-cuestionario .resultado {
+  position: relative;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 15px 30px;
+  max-width: max-content;
+  background-color: var(--primario-opacidad);
+  display: none; /* Inicialmente oculto */
+  align-items: center;
+  color: var(--blanco);
+  border-radius: 50px;
+  border: 3px solid var(--primario);
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contenedor-cuestionario #formulario-cuestionario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 20px;
+  scrollbar-width: thin;
+}
+
+.contenedor-cuestionario #formulario-cuestionario::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+.contenedor-cuestionario #formulario-cuestionario::-webkit-scrollbar-thumb {
+  background: var(--secundario);
+  border-radius: 10px;
+}
+
+/* Estilos adicionales para los estados de True/False después de comprobar */
+.contenedor-cuestionario .contenedor-pregunta[style*="color: green"] .btn-respuesta.seleccionado {
+  background-color: #4CAF50;
+  border-color: #388E3C;
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
+
+.contenedor-cuestionario .contenedor-pregunta[style*="color: red"] .btn-respuesta.seleccionado {
+  background-color: #F44336;
+  border-color: #D32F2F;
+  box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
+}
+
+@media (max-width: 900px) {
+  .contenedor-cuestionario .contenido-principal {
+    width: 90%;
+  }
+
+  .contenedor-cuestionario .contenedor-pregunta {
+    max-width: 95%;
+    padding: 15px;
+    font-size: 120%;
+  }
+
+  .contenedor-cuestionario .btn-respuesta {
+    padding: 8px 16px;
+    font-size: 16px;
+    min-width: 100px;
+  }
+
+  .contenedor-cuestionario .contenedor-boton button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  .contenedor-cuestionario .resultado {
+    font-size: 18px;
+    padding: 12px 25px;
+  }
+}
+
+@media (max-width: 650px) {
+  .contenedor-cuestionario .contenedor-pregunta {
+    max-width: 100%;
+    font-size: 100%;
+  }
+
+  .contenedor-cuestionario .btn-respuesta {
+    margin: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    min-width: 80px;
+  }
+  
+  .contenedor-cuestionario .resultado {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}

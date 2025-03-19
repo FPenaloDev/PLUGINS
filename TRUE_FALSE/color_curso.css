@@ -1,0 +1,17 @@
+@import url('../color_curso.css');
+:root{
+
+    --fondo-div-barra:none;
+    --borde-barra-progreso: var(--primario);
+    --relleno-barra-progreso: var(--primario);
+    --borde-superior-pregunta:var(--primario);
+    --background-pregunta:#fff;
+    --sombra-pregunta:0 5px 15px rgba(0, 0, 0, 0.1);
+    --background-boton:var(--primario);
+    --background-boton-hover:var(--primario);
+    --color-boton:#fff;
+    --sombra-boton-hover:0 5px 10px var(--primario);
+    --borde-input:var(--primario);
+    --input-seleccionado: var(--primario);
+    --sombra-input: 0 0 5px #f2f2f2b0;
+}
