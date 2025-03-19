@@ -28,6 +28,7 @@ export function rellenarHuecos(contenedor, secciones) {
         </div>
         <div class="contenedor-boton">
           <button id="enviar-btn">Comprobar Respuestas</button>
+          <button id="reiniciar-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"><path d="M12 3a9 9 0 1 1-5.657 2"/><path d="M3 4.5h4v4"/></g></svg><span class="texto-boton">Reiniciar</span></button>
           <button id="mostrar-soluciones-btn">Mostrar Soluciones</button>
         </div>
     </div>
@@ -37,6 +38,7 @@ export function rellenarHuecos(contenedor, secciones) {
     const formularioQuiz = document.getElementById('formulario-cuestionario');
     const botonEnviar = document.getElementById('enviar-btn');
     const botonMostrarSoluciones = document.getElementById('mostrar-soluciones-btn');
+    const botonReiniciar = document.getElementById('reiniciar-btn');
     const divResultado = document.getElementById('resultado');
     const barraProgreso = document.getElementById('progreso');
 
@@ -149,6 +151,19 @@ export function rellenarHuecos(contenedor, secciones) {
 
         return { puntaje, totalRespuestas, totalPreguntas };
     }
+
+    // Función para reiniciar la actividad
+    function reiniciarActividad() {
+        document.getElementById('formulario-cuestionario').innerHTML = '';
+        document.getElementById('resultado').style.display = 'none';
+        document.getElementById('progreso').style.width = '0%';
+        document.getElementById('progreso').style.backgroundColor = '#ca2d2d';
+        document.getElementById('enviar-btn').disabled = false;
+        document.getElementById('mostrar-soluciones-btn').disabled = false;
+    
+        respuestas = secciones.map(() => []);
+        iniciar();
+    }    
     // Función para mostrar los resultados
     function mostrarResultados() {
         const { totalRespuestas, totalPreguntas } = verificarRespuestas();
@@ -194,6 +209,10 @@ export function rellenarHuecos(contenedor, secciones) {
         document.querySelectorAll('input').forEach(input => input.style.textAlign = 'center');
 
     });
+    // Evento para reiniciar
+    botonReiniciar.addEventListener('click', () => {
+        reiniciarActividad();
+    })
 
     function iniciar() {
         crearActividad();
