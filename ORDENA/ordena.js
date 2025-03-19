@@ -1,3 +1,4 @@
+import { cargarConfeti, mostrarConfetiFinal } from "../ANIMACIONES/CONFETTI/confetti.js";
 export function ordena(contenedor, niveles) {
   // Configuración inicial
 
@@ -7,16 +8,16 @@ export function ordena(contenedor, niveles) {
   let conceptoArrastrado = null;
 
   const elementos = {};
-
+  cargarConfeti();
   function crearEstilos() {
     if (document.querySelector('.css')) {
       document.querySelector('.css').remove();
-  }
-  const css = document.createElement('link');
-  css.rel = 'stylesheet';
-  css.className = 'css';
-  css.type = 'text/css';
-    css.href = 'PLUGINS/ORDENA/ordena.css';
+    }
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.className = 'css';
+    css.type = 'text/css';
+    css.href = 'ORDENA/ordena.css';
     document.head.appendChild(css);
   }
 
@@ -74,7 +75,7 @@ export function ordena(contenedor, niveles) {
 
   function hacerArrastrables() {
     const conceptos = Array.from(elementos.conceptos);
-    
+
     conceptos.forEach(concepto => {
       // Evento para comenzar a arrastrar
       concepto.addEventListener('dragstart', (e) => {
@@ -82,7 +83,7 @@ export function ordena(contenedor, niveles) {
         setTimeout(() => {
           concepto.classList.add('arrastrando');
         }, 0);
-        
+
         // Seleccionar el concepto al comenzar a arrastrarlo
         if (conceptoSeleccionado) {
           conceptoSeleccionado.classList.remove('seleccionado');
@@ -91,25 +92,25 @@ export function ordena(contenedor, niveles) {
         concepto.classList.add('seleccionado');
         actualizarBotones();
       });
-      
+
       // Evento cuando termina el arrastre
       concepto.addEventListener('dragend', () => {
         concepto.classList.remove('arrastrando');
         conceptoArrastrado = null;
       });
-      
+
       // Permitir que el concepto sea un destino de arrastre
       concepto.addEventListener('dragover', (e) => {
         e.preventDefault();
         if (conceptoArrastrado !== concepto) {
           const rect = concepto.getBoundingClientRect();
           const mitad = rect.y + rect.height / 2;
-          
+
           // Añadir indicador visual de dónde se colocará
           conceptos.forEach(c => {
             c.classList.remove('drop-arriba', 'drop-abajo');
           });
-          
+
           if (e.clientY < mitad) {
             concepto.classList.add('drop-arriba');
           } else {
@@ -117,28 +118,28 @@ export function ordena(contenedor, niveles) {
           }
         }
       });
-      
+
       // Limpiar indicadores visuales cuando el cursor sale
       concepto.addEventListener('dragleave', () => {
         concepto.classList.remove('drop-arriba', 'drop-abajo');
       });
-      
+
       // Manejar el evento drop
       concepto.addEventListener('drop', async (e) => {
         e.preventDefault();
-        
+
         if (conceptoArrastrado === concepto) return;
-        
+
         const rect = concepto.getBoundingClientRect();
         const mitad = rect.y + rect.height / 2;
         const direccion = e.clientY < mitad ? 'arriba' : 'abajo';
-        
+
         // Quitar indicadores visuales
         concepto.classList.remove('drop-arriba', 'drop-abajo');
-        
+
         // Animar y realizar el intercambio
         await animarIntercambioArrastrable(conceptoArrastrado, concepto, direccion);
-        
+
         // Actualizar elementos y botones
         elementos.conceptos = contenedor.querySelectorAll('.concepto');
         actualizarBotones();
@@ -150,27 +151,27 @@ export function ordena(contenedor, niveles) {
     const conceptosActualizados = Array.from(contenedor.querySelectorAll('.concepto'));
     const indiceArrastrado = conceptosActualizados.indexOf(elementoArrastrado);
     const indiceDestino = conceptosActualizados.indexOf(elementoDestino);
-    
+
     // Calculamos las posiciones iniciales de ambos elementos
     const rectArrastrado = elementoArrastrado.getBoundingClientRect();
     const rectDestino = elementoDestino.getBoundingClientRect();
-    
+
     // Calculamos la distancia vertical a animar
     const distanciaY = rectDestino.y - rectArrastrado.y;
-    
+
     // Configuramos la animación
     const duracion = 300;
-    
+
     elementoArrastrado.style.transition = `transform ${duracion}ms ease`;
     elementoDestino.style.transition = `transform ${duracion}ms ease`;
-    
+
     // Si el elemento se arrastra arriba del destino
     if (direccion === 'arriba') {
       // Movemos el elemento arrastrado hacia arriba
       if (indiceArrastrado > indiceDestino) {
         // El elemento arrastrado va hacia arriba
         elementoArrastrado.style.transform = `translateY(${-Math.abs(distanciaY)}px)`;
-        
+
         // Los elementos intermedios bajan
         const elementosIntermedios = conceptosActualizados.slice(indiceDestino, indiceArrastrado);
         elementosIntermedios.forEach(elem => {
@@ -179,9 +180,9 @@ export function ordena(contenedor, niveles) {
             elem.style.transform = `translateY(${elementoArrastrado.offsetHeight}px)`;
           }
         });
-        
+
         await new Promise(resolve => setTimeout(resolve, duracion));
-        
+
         // Restauramos los estilos y reorganizamos el DOM
         elementoArrastrado.style.transition = '';
         elementoArrastrado.style.transform = '';
@@ -189,7 +190,7 @@ export function ordena(contenedor, niveles) {
           elem.style.transition = '';
           elem.style.transform = '';
         });
-        
+
         elementos.listaConceptos.insertBefore(elementoArrastrado, elementoDestino);
       } else {
         // Intercambio cuando el elemento ya está arriba pero queremos insertarlo antes
@@ -200,7 +201,7 @@ export function ordena(contenedor, niveles) {
       if (indiceArrastrado < indiceDestino) {
         // El elemento arrastrado va hacia abajo
         elementoArrastrado.style.transform = `translateY(${Math.abs(distanciaY)}px)`;
-        
+
         // Los elementos intermedios suben
         const elementosIntermedios = conceptosActualizados.slice(indiceArrastrado + 1, indiceDestino + 1);
         elementosIntermedios.forEach(elem => {
@@ -209,9 +210,9 @@ export function ordena(contenedor, niveles) {
             elem.style.transform = `translateY(${-elementoArrastrado.offsetHeight}px)`;
           }
         });
-        
+
         await new Promise(resolve => setTimeout(resolve, duracion));
-        
+
         // Restauramos los estilos y reorganizamos el DOM
         elementoArrastrado.style.transition = '';
         elementoArrastrado.style.transform = '';
@@ -219,7 +220,7 @@ export function ordena(contenedor, niveles) {
           elem.style.transition = '';
           elem.style.transform = '';
         });
-        
+
         elementos.listaConceptos.insertBefore(elementoArrastrado, elementoDestino.nextSibling);
       } else {
         // Intercambio cuando el elemento ya está abajo pero queremos insertarlo después
@@ -285,7 +286,32 @@ export function ordena(contenedor, niveles) {
     elementos.botonArriba.disabled = indice === 0;
     elementos.botonAbajo.disabled = indice === conceptosActualizados.length - 1;
   }
+  function mostrarPopupFinal() {
+    const overlay = document.createElement('div');
+    overlay.id = 'overlayPopup';
+    overlay.innerHTML = `
+        <div id="popupContent">
+            <h2>¡Felicidades!</h2>
+            <p>Has completado todas las rondas. ¡Excelente trabajo!</p>
+            <button id="btnCerrarPopup" onclick="cerrarPopup()">Cerrar</button>
+        </div>
+    `;
+    document.querySelector('#actividad-ordena').appendChild(overlay);
 
+    overlay.style.display = 'flex';
+
+    document.getElementById('btnCerrarPopup', 'overlayPopup').addEventListener('click', () => {
+      cerrarPopup();
+    });
+    document.getElementById('overlayPopup').addEventListener('click', () => {
+      cerrarPopup();
+    });
+  }
+
+  function cerrarPopup() {
+    const overlay = document.getElementById('overlayPopup');
+    overlay.remove();
+  }
   async function verificarOrden() {
     const conceptosActualizados = Array.from(contenedor.querySelectorAll('.concepto'));
     const ordenActual = conceptosActualizados.map(concepto =>
@@ -304,18 +330,19 @@ export function ordena(contenedor, niveles) {
 
     if (ordenCorrecto) {
       document.getElementById('mensajeNivel').style.background = 'green';
-      mostrarMensajeNivel(`¡Perfecto! ¡Has completado el nivel correctamente!`);
       elementos.botonVerificar.disabled = true;
 
-      await new Promise(resolve => setTimeout(resolve, 2000));
 
       if (nivel < niveles.length) {
+        mostrarMensajeNivel(`<p>¡Perfecto! ¡Has completado el nivel correctamente!</p>`);
         nivel++;
         inicializar();
       } else {
-        mostrarMensajeNivel('¡Felicidades! ¡Has completado todos los niveles!');
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        reiniciarJuego();
+        await new Promise(resolve => setTimeout(resolve, 0));
+        mostrarConfetiFinal();
+        setTimeout(() => {
+          mostrarPopupFinal();
+        }, 2000);
       }
     } else {
       // Retroalimentación mejorada para intentos incorrectos
@@ -323,13 +350,13 @@ export function ordena(contenedor, niveles) {
 
       if (porcentajeAcierto >= 80) {
         document.getElementById('mensajeNivel').style.background = 'blue';
-        mensaje = `¡Casi lo tienes! ${elementosCorrectos} de ${totalElementos} elementos están en la posición correcta.`;
+        mensaje = `<p>¡Casi lo tienes! ${elementosCorrectos} de ${totalElementos} elementos están en la posición correcta.</p>`;
       } else if (porcentajeAcierto >= 50) {
         document.getElementById('mensajeNivel').style.background = 'blue';
-        mensaje = `Vas por buen camino. ${elementosCorrectos} de ${totalElementos} elementos están correctos.`;
+        mensaje = `<p>Vas por buen camino. ${elementosCorrectos} de ${totalElementos} elementos están correctos.</p>`;
       } else {
         document.getElementById('mensajeNivel').style.background = 'red';
-        mensaje = `Intenta revisar nuevamente. Solo ${elementosCorrectos} de ${totalElementos} elementos están en la posición correcta.`;
+        mensaje = `<p>Intenta revisar nuevamente. Solo ${elementosCorrectos} de ${totalElementos} elementos están en la posición correcta.</p>`;
       }
 
       mostrarMensajeNivel(mensaje);
@@ -337,42 +364,38 @@ export function ordena(contenedor, niveles) {
   }
 
   async function mostrarFeedbackConceptos(ordenActual, conceptosActualizados) {
-    // Mostrar feedback visual para cada concepto
-    const promesas = conceptosActualizados.map(async (concepto, indice) => {
-      // Obtener el orden correcto para este concepto
+    conceptosActualizados.forEach((concepto, indice) => {
       const ordenEsperado = indice + 1;
       const ordenActualConcepto = parseInt(concepto.getAttribute('data-orden'));
-
-      // Determinar si está en la posición correcta
       const esCorrecta = ordenActualConcepto === ordenEsperado;
 
-      // Añadir clase de retroalimentación
+      // Aplicar estilos según si es correcto o incorrecto
+      concepto.style.backgroundColor = esCorrecta ? '#bbd9a0' : 'rgb(220, 53, 69,0.5)';
+      concepto.classList.remove('correcto', 'incorrecto');
       concepto.classList.add(esCorrecta ? 'correcto' : 'incorrecto');
 
-      // Añadir un indicador visual de la posición correcta
+      // Si está en la posición incorrecta, agregar el indicador de posición
       if (!esCorrecta) {
-        const indicadorPosicion = document.createElement('span');
-        indicadorPosicion.classList.add('indicador-posicion');
-        indicadorPosicion.textContent = `Posición correcta: ${ordenActualConcepto}`;
-        indicadorPosicion.style.position = 'absolute';
-        indicadorPosicion.style.right = '10px';
-        indicadorPosicion.style.fontSize = '0.8em';
-        indicadorPosicion.style.color = '#dc3545';
-        concepto.style.position = 'relative';
-        concepto.appendChild(indicadorPosicion);
+        let indicadorPosicion = concepto.querySelector('.indicador-posicion');
+        if (!indicadorPosicion) {
+          indicadorPosicion = document.createElement('span');
+          indicadorPosicion.classList.add('indicador-posicion');
+          indicadorPosicion.innerHTML = `<p>Posición: ${ordenActualConcepto}</p>`;
+          indicadorPosicion.style.position = 'absolute';
+          indicadorPosicion.style.right = '10px';
+          indicadorPosicion.style.fontSize = '0.8em';
+          indicadorPosicion.style.color = '#dc3545';
+          concepto.style.position = 'relative';
+          concepto.appendChild(indicadorPosicion);
+        }
+      } else {
+        // Si está correcto, eliminar el indicador si existe
+        const indicador = concepto.querySelector('.indicador-posicion');
+        if (indicador) indicador.remove();
       }
-
-      // Mantener la retroalimentación visual por más tiempo
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      // Eliminar clases y elementos de retroalimentación
-      concepto.classList.remove('correcto', 'incorrecto');
-      const indicador = concepto.querySelector('.indicador-posicion');
-      if (indicador) concepto.removeChild(indicador);
     });
-
-    await Promise.all(promesas);
   }
+
 
   async function animarIntercambio(elemento1, elemento2, direccion) {
     const altura = elemento1.offsetHeight;
@@ -399,7 +422,7 @@ export function ordena(contenedor, niveles) {
   }
 
   function mostrarMensajeNivel(mensaje) {
-    elementos.mensajeNivel.textContent = mensaje;
+    elementos.mensajeNivel.innerHTML = mensaje;
     elementos.mensajeNivel.classList.add('visible');
     setTimeout(() => {
       elementos.mensajeNivel.classList.remove('visible');

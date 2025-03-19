@@ -1,6 +1,6 @@
 import { ordena } from './ordena.js';
 // Niveles del juego
-const contenedor = document.getElementById('si408');
+const contenedor = document.getElementById('ejemplo');
 
 const secciones = [
   {
@@ -12,7 +12,7 @@ const secciones = [
       "Se realizan las pruebas necesarias",
       "Finalmente se despliega la aplicación"
     ]
-  },
+  }/* ,
   {
     titulo: "Ciclo del Agua",
     conceptos: [
@@ -32,7 +32,7 @@ const secciones = [
       "Surge el primer navegador gráfico",
       "La web se vuelve accesible al público"
     ]
-  }
+  } */
 ];
 
 
