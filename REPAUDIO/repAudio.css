@@ -1,0 +1,50 @@
+@import url('../color_curso.css');
+/* 
+Variables
+*/
+:root {
+    --icono:var(--primario);
+    --icono-hover:var(--secundario);
+    --background-boton:var(--secundario);
+    --background-boton-hover:var(--primario);
+}
+/* 
+Estilo
+*/
+.botones {
+    width:30%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+}
+
+button {
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    border: none;
+    background:var(--background-boton);
+    transition:all 0.4s ease-in;
+
+    svg {
+        transition:all 0.4s ease-in;
+        width:2em;
+        path {
+            fill:var(--icono);
+        }
+    }
+}
+button:hover {
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    border: none;
+    background:var(--background-boton-hover);
+
+    path {
+        fill:var(--icono-hover);
+    }
+}
